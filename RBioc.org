@@ -50,6 +50,9 @@ interpretation.
 
 Number of new packages, number of downloads, ... 
 
+See figures/development_biocviews.png (and createBiocViewFigure.R) for an
+example of "Number of new packages".
+
 ** Conclusions
 
 Fills one important niche in computational proteomics. 
