@@ -1,0 +1,56 @@
+
+* Outline
+Here is a brief overview of what could be included:
+
+** Intro
+
+Importance of sound data analysis...
+
+** Proteomics 
+
+- Raw data handling: mzR, mzID, ...
+- Quantitation: MSnbase, MALDIquant, synapter, MSnID, N14N15, ...
+- Identification: MSGFplus/gui, rTANDEM, also pointer to mzID, ...
+- Data analysis/processing: msms[EDA/Tests], MSnbase, isobar, ...
+- Other: PPI, organelle proteomics, access to databases and sequences, ...
+
+** Conclusion
+
+Following on the successful steps on genomics, combining experitise in
+proteomics, computer science and statistics, ... 
+
+* Abstract
+
+The abstract can have up to 300 words and should be organized in the following way:
+
+TITLE: Using R and Bioconductor for proteomics data analysis
+
+Sebastian Gibb, Lisa M Breckels, Thomas Dybdal Pedersen <thomasp85@gmail.com>, Vladislav Petyuk <petyuk@gmail.com> and Laurent Gatto 
+
+** Introduction and objectives
+
+With the increase in throughput and complexity in the experimental
+designs, the processing, analysis and interpretation of proteomics
+data becomes a major bottleneck that can be tackled by the appropriate
+use of statistical and computational tools. The R language and in
+particular the Bioconductor project have had a major impact of other
+fields in high-throughput biology and has, in the recent years,
+benefited from substantial contributions from the computational
+proteomics developers.
+
+** Methods
+
+We summarise some of the latest R and Bioconductor developments in the
+field of proteomics, including the support of open community-driven
+formats for raw and identification data, peptide-spectrum matching,
+quantitative proteomics, data processing, visualisation and
+interpretation.
+
+** Results and Discussion
+
+Number of new packages, number of downloads, ... 
+
+** Conclusions
+
+Fills one important niche in computational proteomics. 
+
