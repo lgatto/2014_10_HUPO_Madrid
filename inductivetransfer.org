@@ -1,6 +1,7 @@
 *** A Transfer Learning Framework for Organelle Proteomics Data
 
-LM Breckels^12, S Holden^3, KS Lilley^2, L Gatto^12
+LM Breckels^{12}, S Holden^3, KS Lilley^2, L Gatto^12
+
 ^1 Computational Proteomics Unit, ^2 Cambridge Centre for Proteomics, ^3 The Computer Laboratory, University of Cambridge, UK
 
 Background: Organelle proteomics, or spatial proteomics, is the systematic study of proteins and their assignment to organelles, and is a field of rapidly growing importance. The knowledge of subcellular localisation of proteins is extremely desirable to biologists, as it can assist elucidation of a protein’s role within the cell, as proteins are spatially organised according to their function and specificity of their molecular interactions. Experimental organelle proteomics requires sophisticated experimental designs and data analyses in order to obtain accurate datasets, and to collectively infer the localisation of thousands of proteins [1].
