@@ -1,16 +1,17 @@
 *** A Transfer Learning Framework for Organelle Proteomics Data
 
-LM Breckels^{12}, S Holden^3, KS Lilley^2, L Gatto^12
+*LM Breckels^{12}, S Holden^{3}, KS Lilley^{2}, L Gatto^{12}*
 
-^1 Computational Proteomics Unit, ^2 Cambridge Centre for Proteomics, ^3 The Computer Laboratory, University of Cambridge, UK
+*^{1} Computational Proteomics Unit, ^{2} Cambridge Centre for Proteomics, ^{3} The Computer Laboratory, University of Cambridge, UK*
 
-Background: Organelle proteomics, or spatial proteomics, is the systematic study of proteins and their assignment to organelles, and is a field of rapidly growing importance. The knowledge of subcellular localisation of proteins is extremely desirable to biologists, as it can assist elucidation of a protein’s role within the cell, as proteins are spatially organised according to their function and specificity of their molecular interactions. Experimental organelle proteomics requires sophisticated experimental designs and data analyses in order to obtain accurate datasets, and to collectively infer the localisation of thousands of proteins [1].
 
-Methods: We use machine learning in a data fusion and inductive transfer framework [4] to simultaneously exploit several sources of information available with which to assign a protein to its subcellular compartment. These sources encompass (primary) data produced from experimental high-throughput mass spectrometry (MS)-based methods (e.g. [2, 3]) and _in silico_ (auxiliary) data such as sequence-based predictions and Gene Ontology information.
+*Background:* Organelle proteomics, or spatial proteomics, is the systematic study of proteins and their assignment to organelles, and is a field of rapidly growing importance. The knowledge of subcellular localisation of proteins is extremely desirable to biologists, as it can assist elucidation of a protein’s role within the cell, as proteins are spatially organised according to their function and specificity of their molecular interactions. Experimental organelle proteomics requires sophisticated experimental designs and data analyses in order to obtain accurate datasets, and to collectively infer the localisation of thousands of proteins [1].
 
-Results: We find that integrating data, from a second more plentiful auxiliary data source, directly in to classifier training and classifier creation results in the assignment of proteins to organelles with high generalisation accuracy. Furthermore, we show our hybrid, data fusion method outperforms a single classifier trained on each single data source alone.
+*Methods:* We use machine learning in a data fusion and inductive transfer framework [4] to simultaneously exploit several sources of information available with which to assign a protein to its subcellular compartment. These sources encompass (primary) data produced from experimental high-throughput mass spectrometry (MS)-based methods (e.g. [2, 3]) and _in silico_ (auxiliary) data such as sequence-based predictions and Gene Ontology information.
 
-Conclusion: A new transfer learning framework for predicting protein localisation prediction that uses a novel machine learning methodology to unify multiple sources of information is proposed, which forms part the Bioconductor _pRoloc_ [5] suite of computational methods available for organelle proteomics data analysis.
+*Results:* We find that integrating data, from a second more plentiful auxiliary data source, directly in to classifier training and classifier creation results in the assignment of proteins to organelles with high generalisation accuracy. Furthermore, we show our hybrid, data fusion method outperforms a single classifier trained on each single data source alone.
+
+*Conclusion:* A new transfer learning framework for predicting protein localisation prediction that uses a novel machine learning methodology to unify multiple sources of information is proposed, which forms part the Bioconductor _pRoloc_ [5] suite of computational methods available for organelle proteomics data analysis.
 
 References:
 [1] Gatto, L. et al., Proteomics 2010, 10, 3957
@@ -18,3 +19,5 @@ References:
 [3] Tan, DJ. et al., J Proteome Res. 2009, 8, 2667
 [4] Wu, P and Dietterich, TG, Proc. 21st Int’l Conf. Machine Learning. 2004, 110.
 [5] Gatto, L et al. Bioinformatics 2014, In press.
+
+203 words.
