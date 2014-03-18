@@ -50,7 +50,8 @@ getBiocViewPackagesNumber <- function(view,
 #                                     "2.11", "2.12", "2.13"))
 createBiocViewFigure <- function(views, biocVersions,
                                  rep = "BioCsoft",
-                                 cols=rainbow(length(views))) {
+                                 labels = biocVersions,
+                                 cols = rainbow(length(views))) {
   rep <- rep_len(rep, length(views))
   counts <- vector(mode="list", length=length(views))
 
@@ -67,9 +68,11 @@ createBiocViewFigure <- function(views, biocVersions,
 
   plot(NA, xlim=xlim, ylim=ylim,
        main="Development of BiocViews over time",
-       xlab="Bioconductor Versions", ylab="Number of Packages",
+       xlab="", ylab="Number of Packages",
        xaxt="n")
-  axis(1, seq_along(biocVersions), labels=biocVersions)
+  axis(side=1, at=seq_along(biocVersions), labels=NA)
+  mtext(text=labels, at=seq_along(biocVersions), line=2, side=1)
+  title(xlab="Bioconductor Versions", line=4)
 
   for (i in seq(along=views)) {
     lines(counts[[i]], col=cols[i], type="b", pch=15)
@@ -80,3 +83,16 @@ createBiocViewFigure <- function(views, biocVersions,
   invisible(counts)
 }
 
+## run the following
+biocVersions <- paste(2, 6:13, sep=".")
+dates <- c("Apr 2010", "Oct 2010", # 2.6, 2.7
+           "Apr 2011", "Nov 2011", # 2.8, 2.9
+           "Apr 2012", "Oct 2012", # 2.10, 2.11
+           "Apr 2013", "Oct 2013") # 2.12, 2.13
+labels <- paste(biocVersions, dates, sep="\n")
+
+png(file.path("figures", "development_biocviews.png"), width=640, height=640)
+createBiocViewFigure(views=c("Proteomics", "MassSpectrometry", "MassSpectrometryData"),
+                     rep=c("BioCsoft", "BioCsoft", "BioCexp"),
+                     biocVersions=biocVersions, labels=labels)
+dev.off()
