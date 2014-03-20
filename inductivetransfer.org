@@ -48,7 +48,7 @@ References:
 [1] Gatto, L. et al., Proteomics 2010, 10, 3957
 [2] Dunkley, T. et al. PNAS, 2006, 103: 6518– 23
 [3] Tan, DJ. et al., J Proteome Res. 2009, 8, 2667
-[4] Wu, P and Dietterich, TG, Proc. 21st Int'l Conf. Machine Learning. 2004, 110.
-[5] Gatto, L et al. Bioinformatics 2014, In press.
+[4] Wu, P. and Dietterich, TG., ICML. 2004, 871.
+[5] Gatto, L. et al. Bioinformatics 2014, In press.
 
 203 (255?) words.
