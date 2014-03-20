@@ -52,3 +52,8 @@ References:
 [5] Gatto, L et al. Bioinformatics 2014, In press.
 
 203 (255?) words.
+
+NB: It is important to stress out in the abstract and poster/paper
+that our main goal is to resolve localisation for a particular data
+set, that the experimental data is what we care about and to
+distinguish our work from the dry sub cellular folks.
