@@ -1,0 +1,9 @@
+A state-of-the-art machine learning pipeline for the analysis of organelle proteomics data
+
+Laurent Gatto [1,2], Lisa M. Breckels [1,2], Samuel Wieczorek [3], Thomas Burger [3] and Kathryn S. Lilley [2]
+
+[1] Computational Proteomics Unit, Department of Biochemistry, University of Cambridge, Cambridge, UK
+[2] Cambridge Centre for Proteomics, Department of Biochemistry, University of Cambridge, Cambridge, UK
+[3] Universite Grenoble-Alpes, CEA (iRSTV/BGE), INSERM (U1038), CNRS (FR3425), 38054 Grenoble, France
+
+
