@@ -5,7 +5,7 @@ The abstract can have up to 300 words and should be organized in the following w
 
 TITLE: A current perspective on using R and Bioconductor for proteomics data analysis
 
-Sebastian Gibb [1,3], Lisa M Breckels [2,3], Thomas Lin Pedersen [4], Vladislav Petyuk [5], Kathryn S Lilley [2] and Laurent Gatto [2,3](*) 
+Sebastian Gibb [1,3], Lisa M Breckels [2,3], Thomas Lin Pedersen [4], Vladislav A Petyuk [5], Kathryn S Lilley [2] and Laurent Gatto [2,3](*) 
 
 [1] Institute for Medical Informatics, Statistics and Epidemiology, University of Leipzig, Germany 
 [2] Cambridge Centre for Proteomics, Department of Biochemistry, University of Cambridge, UK 
