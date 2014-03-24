@@ -42,9 +42,9 @@ produce biologically relevant and meaningful interpretation.
 Complex high dimensional data analysis is a challenging task. While
 statistics and computer science provide the wider research community
 with several algorithms and best practice, their application is often
-difficult and may at times, when underlying assumptions not met, lead
+difficult and may at times, when underlying assumptions are not met, lead
 to misleading claims. We show how such state-of-the-art methods can be
-applied on well defined and annotated data in a coherent, traceable
+applied on well-defined and annotated data in a coherent, traceable
 and reproducible pipeline.
 
 
