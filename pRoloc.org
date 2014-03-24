@@ -1,4 +1,4 @@
-A state-of-the-art machine learning pipeline for the analysis of organelle proteomics data
+* A state-of-the-art machine learning pipeline for the analysis of organelle proteomics data
 
 Laurent Gatto [1,2], Lisa M. Breckels [1,2], Samuel Wieczorek [3], Thomas Burger [3] and Kathryn S. Lilley [2]
 
@@ -6,4 +6,47 @@ Laurent Gatto [1,2], Lisa M. Breckels [1,2], Samuel Wieczorek [3], Thomas Burger
 [2] Cambridge Centre for Proteomics, Department of Biochemistry, University of Cambridge, Cambridge, UK
 [3] Universite Grenoble-Alpes, CEA (iRSTV/BGE), INSERM (U1038), CNRS (FR3425), 38054 Grenoble, France
 
+** Introduction and objectives 
 
+Organelle proteomics, or spatial proteomics, is the systematic study
+of protein sub-cellular localisation. Here, we focus on high-throughput
+quantitative mass spectrometry-based techniques such as LOPIT and PCP
+and demonstrate a robust and sound analysis pipeline using
+state-of-the-art and novel machine learning algorithms implemented in
+the pRoloc [1] R/Bioconductor package.
+
+** Methods
+
+We illustrate the pipeline using relevant real-world data sets
+available from the pRolocdata package [1], documenting importing data
+available in spreadsheet formats into the R environment, missing data
+imputation, data quality control, facilitated organelle marker
+assignment, protein clustering, identification of new, non-labelled
+organelles using semi-supervised machine learning [2], protein
+classification and data visualisation.
+
+** Results and Discussion
+
+While the pipeline automates some fundamental requirements such as
+parameter optimisation via cross-validation, imputation of missing
+values, organelle markers definition and allows the user to assess
+such crucial parameters, we also highlight the importance of informed
+user decisions and validation. Despite the requirement for elaborate
+and cross-disciplinary tool sets, the biologists must remain in
+control of the fate of their data and in a position to make informed
+decisions about the data analysis and validity of the results to
+produce biologically relevant and meaningful interpretation.
+
+** Conclusions
+
+Complex high dimensional data analysis is a challenging task. While
+statistics and computer science provide the wider research community
+with several algorithms and best practice, their application is often
+difficult and may at times, when underlying assumptions not met, lead
+to misleading claims. We show how such state-of-the-art methods can be
+applied on well defined and annotated data in a coherent, traceable
+and reproducible pipeline.
+
+
+[1] Gatto, L. et al. Bioinformatics 2014, In press.
+[2] Breckels LM. et al. J Proteomics. 2013, 2(88), 129-40.
