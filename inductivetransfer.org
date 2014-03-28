@@ -15,10 +15,10 @@ spatially organised according to their function and specificity of
 their molecular interactions. Experimental organelle proteomics
 requires sophisticated experimental designs and data analyses in order
 to obtain accurate datasets, and to collectively infer the
-localisation of thousands of proteins [1]. Here, the goal of our
-approach is to use freely available data from repositories to
-improve upon the classification of experimental, condition and 
-organism-specific protein subcellular localistation predictions. 
+localisation of thousands of proteins [1]. Here, we use 
+freely available data from repositories to improve upon the 
+classification of experimental, condition and organism-specific 
+protein subcellular localistation predictions. 
 
 ** Methods
 
