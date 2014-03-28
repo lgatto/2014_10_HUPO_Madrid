@@ -4,7 +4,7 @@ LM Breckels^{12}, S Holden^{3}, KS Lilley^{2}, L Gatto^{12}
 
 ^{1} Computational Proteomics Unit, ^{2} Cambridge Centre for Proteomics, ^{3} The Computer Laboratory, University of Cambridge, UK
 
-** Background
+** Introduction and objectives 
 
 Organelle proteomics, or spatial proteomics, is the systematic study
 of proteins and their assignment to organelles, and is a field of
@@ -15,22 +15,22 @@ spatially organised according to their function and specificity of
 their molecular interactions. Experimental organelle proteomics
 requires sophisticated experimental designs and data analyses in order
 to obtain accurate datasets, and to collectively infer the
-localisation of thousands of proteins [1]. 
+localisation of thousands of proteins [1]. Here, the goal of our
+approach is to use freely available data from repositories to
+improve upon the classification of experimental, condition and 
+organism-specific protein subcellular localistation predictions. 
 
 ** Methods
 
-We use state-of-the-art machine learning in an transfer learning
+We use state-of-the-art machine learning in a transfer learning
 framework [2] to simultaneously exploit several sources of information
 available with which to assign a protein to its subcellular
 compartment. These sources encompass our main (primary) data produced
 from experimental high-throughput mass spectrometry (MS)-based methods
 and _in silico_ (auxiliary) data such as sequence-based predictions
-and Gene Ontology information. The goal of our approach is to use
-freely available data from repositories to improve upon the
-classification of experimental, condition and organism-specific
-protein subcellular localistation predictions.
+and Gene Ontology information. 
 
-** Results
+** Results and conclusions
 
 We find that integrating data, from a second more plentiful auxiliary
 data source, directly in to classifier training and classifier
