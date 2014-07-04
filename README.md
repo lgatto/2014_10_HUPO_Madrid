@@ -1,7 +1,7 @@
 HUPO2014
 ========
 
-Material for HUPO 2104 in Madrid
+Material for HUPO 2014 in Madrid
 
 Suggestions for poster/talk:
 
