@@ -140,6 +140,24 @@ set.seed(1)
        \justifying
      \end{block}
 
+     \begin{block}{Bioconductor package submissions and downloads}
+      \begin{figure}[h]
+        \begin{subfigure}[b]{0.49\linewidth}
+          \includegraphics[width=\linewidth]{figures/development_biocviews_sep2014}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+          \includegraphics[width=\linewidth]{figures/downloads_biocviews_sep2014}
+        \end{subfigure}
+        \label{fig:biocviews}
+        \caption{The left figure shows the growing number of packages on
+        Bioconductor in the BiocViews \emph{Proteomics, MassSpectrometry} and
+        \emph{MassSpectrometryData}. On the right figure the number of distinct
+        package downloads in these BiocViews are depicted (please note that
+        the data for Bioc 2.12 are interpolated because of server problems in
+        this time period).}
+      \end{figure}
+
+     \end{block}
      \vfill
 
     \end{column}
