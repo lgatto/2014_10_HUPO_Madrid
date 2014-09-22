@@ -1,0 +1,179 @@
+%\VignetteEngine{knitr}
+%\VignetteIndexEntry{HUPO2014 RBioc poster}
+%\VignetteKeywords{bioinformatics, proteomics, mass spectrometry}
+
+\documentclass[final]{beamer}
+
+\mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
+  %% \usetheme{CCP}
+}
+
+\setbeamertemplate{bibliography item}[text]
+
+\boldmath
+\usepackage[orientation=portrait,size=a0,scale=1.4,debug]{beamerposter}                        % e.g. for DIN-A0 poster
+%\usepackage[orientation=portrait,size=a1,scale=1.4,grid,debug]{beamerposter}                  % e.g. for DIN-A1 poster, with optional grid and debug output
+%\usepackage[size=custom,width=200,height=120,scale=2,debug]{beamerposter}                     % e.g. for custom size poster
+%\usepackage[orientation=portrait,size=a0,scale=1.0,printer=rwth-glossy-uv.df]{beamerposter}   % e.g. for DIN-A0 poster with rwth-glossy-uv printer check
+% ...
+%
+
+%% hide navigation symbols (bottom right)
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{ragged2e}
+\usepackage[english]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\usefonttheme[onlymath]{serif}
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{tcolorbox}
+\usepackage{changepage} %% provided adjustwidth
+\usepackage{framed}
+
+\newcommand{\R}{\texttt{R} }
+\newcommand{\code}[1]{{\texttt{#1}}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rpackage}[1]{{\mbox{\texttt{#1}}}}
+\newcommand{\email}[1]{\href{mailto:#1}{\normalfont\texttt{#1}}}
+
+\newcommand{\challenge}[1]{
+       \begin{tcolorbox}[notitle,boxrule=1pt,colback=blue!10,colframe=blue!25]
+         \textbf{Challenges}~{#1}
+       \end{tcolorbox}
+}
+
+\newcommand{\secintro}[1]{
+  \bigskip
+  \begin{tcolorbox}[notitle,boxrule=0pt,colback=blue!10,colframe=blue!10]{#1}\end{tcolorbox}}
+
+
+%% colors
+\definecolor{Red}{rgb}{0.7,0,0}
+\definecolor{Blue}{rgb}{0,0,0.8}
+
+
+\usepackage[bordercolor=white, backgroundcolor=gray!20]{todonotes}
+
+\usepackage{hyperref}
+\usepackage{breakurl}
+\hypersetup{%
+  pdfauthor={Laurent Gatto},%
+  pdfusetitle,
+  bookmarks = {true},
+  bookmarksnumbered = {true},
+  bookmarksopen = {true},
+  bookmarksopenlevel = 2,
+  unicode = {true},
+  breaklinks = {false},
+  hyperindex = {true},
+  colorlinks = {true},
+  linktocpage = {true},
+  plainpages = {false},
+  linkcolor = {Blue},
+  citecolor = {Blue},
+  urlcolor = {Red},
+  pdfstartview = {Fit},
+  pdfpagemode = {UseOutlines},
+  pdfview = {XYZ null null null}
+}
+
+
+
+%% figure numbering
+\usecaptiontemplate{
+  \small
+  \structure{\insertcaptionname~\insertcaptionnumber:}
+  \insertcaption
+}
+
+\title[HUPO14 RBioc]{\huge A current perspective on using \R and Bioconductor for proteomics data analysis}
+
+\author[Gatto et al.]{\large L. Gatto$^{*, 1,2}$, S. Gibb$^{2,3}$}
+
+\institute[CCP]{
+  \begin{small}
+    $^1$Cambridge Centre for Proteomics, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
+    $^2$Computational Proteomics Unit, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
+    $^3$Department of Anesthesiology and Intensive Care, Medical Faculty Carl Gustav Carus, Technical University Dresden, Fetscherstr. 74, 01307 Dresden\\
+    \bigskip
+    $^{*}$\url{lg390@cam.ac.uk} -- \url{http://www.bio.cam.ac.uk/proteomics/}
+  \end{small}
+}
+
+\date[]{}
+
+\begin{document}
+
+<<env, include=FALSE, echo=FALSE, cache=FALSE>>=
+library("knitr")
+opts_chunk$set(fig.align = 'center',
+               fig.show = 'hold',
+               par = TRUE,
+               prompt = FALSE,
+               eval = TRUE,
+               stop_on_error = 1L,
+               comment = ':')
+options(replace.assign = TRUE,
+        width = 50)
+
+set.seed(1)
+@
+%%$
+
+\begin{frame}[fragile]
+
+  \maketitle
+
+  \begin{columns}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% first column %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{column}{.48\textwidth}
+     \begin{block}{Introduction}
+       \justifying
+     \end{block}
+
+     \vfill
+
+    \end{column}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %% second column %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{column}{.48\textwidth}
+      %% next block %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \begin{block}{Right column}
+        \justifying
+      \end{block}
+      %%\vfill
+      \begin{block}{}
+        \justifying
+        \tiny
+
+        \begin{thebibliography}{1}
+
+        \bibitem{r4p} Gatto L and Christoforou A.
+          \emph{Using R and Bioconductor for proteomics data analysis}.
+          Biochim Biophys Acta. 2013 %% May 18. doi:pii: S1570-9639(13)00186-6.10.1016/j.bbapap.2013.04.032.
+          PMID: 23692960.
+
+        \end{thebibliography}
+      \end{block}
+
+      %% \vspace{2mm}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
+
+\end{document}
+
