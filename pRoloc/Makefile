@@ -41,3 +41,4 @@ HUPO_2014_poster.tex: HUPO_2014_poster.Rnw
 clean:
 	rm -f *~
 	rm -f $(LATEXFILES)
+	rm -f .Rhistory .Makefile.swp
