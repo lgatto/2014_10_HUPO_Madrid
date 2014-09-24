@@ -26,11 +26,19 @@ createBiocViewFigure <- function(views, biocVersions,
 }
 
 ## run the following
-versions <- paste(2, 6:13, sep=".")
+versions <- paste(2, 6:14, sep=".")
 labels <- paste(versions, biocDates[match(versions, biocVersions)], sep="\n")
+views <- c("Proteomics", "MassSpectrometry", "MassSpectrometryData")
 
-png(file.path("..", "figures", "development_biocviews.png"), width=640, height=640)
-createBiocViewFigure(views=c("Proteomics", "MassSpectrometry", "MassSpectrometryData"),
-                     rep=c("BioCsoft", "BioCsoft", "BioCexp"),
-                     biocVersions=versions, labels=labels)
+pdf(file.path("..", "poster", "figures", "development_biocviews_sep2014.pdf"))
+counts <- createBiocViewFigure(views=views,
+                               rep=c("BioCsoft", "BioCsoft", "BioCexp"),
+                               biocVersions=versions, labels=labels)
 dev.off()
+
+counts <- do.call(cbind, counts)
+colnames(counts) <- views
+
+dir.create(file.path("..", "output"), showWarnings = FALSE)
+write.csv(counts,
+          file=file.path("..", "output", "development_biocviews_sep2014.csv"))
