@@ -180,36 +180,38 @@ options(replace.assign = TRUE,
           \bigskip 
 
           \begin{large}
-            Below, we illustrate a typical \Rpackage{pRoloc} analysis 
-            \justifying 
+            Below, we illustrate a typical \Rpackage{pRoloc} analysis
+            pipeline: \justifying
             \begin{enumerate}
             \item Loading data into \texttt{R} and adding markers
             \item QC: checking resolution in the data and organelle
               markers
             \item Detection of new organelle clusters
             \item Classification of unlabelled proteins
-            \item Results, intepretation and visualisation
+            \item Results, interpretation and visualisation
             \end{enumerate}            
           \end{large}
         \end{block}
        }
      
 
-
-     \vspace{2cm}
+     % \vspace{2cm}
+       \vfill
 
       \begin{block}{1) Data input}
 
-        We read quantitative data from 10 fractions sampled along a
-        separation gradient from a \texttt{csv} file and add organelle
-        markers. This code creates an \Robject{MSnSet} data object
-        (\Robject{spat} below) that stores the quantitative data and
-        the metadata, that can subsequently be easily manipulated,
-        plotted and further processed.
+        We start by reading quantitative data from 10 fractions (at
+        positions 2 to 11 in the data spreadsheet) sampled along a
+        separation gradient from a \texttt{csv} file and add
+        \textit{Drosophila} organelle markers. This code creates an
+        \Robject{MSnSet} data object (named \Robject{spat}) that
+        stores the quantitative data and the metadata, and can
+        subsequently be easily manipulated, plotted and further
+        processed.
 
         <<data,eval=FALSE>>=
-        spat <- readMSnSet2("quant-data.csv", ecols = 1:10)
-        spat <- addMarkers(spat, "hsap")
+        spat <- readMSnSet2("quant-data.csv", ecols = 2:11)
+        spat <- addMarkers(spat, "dmel")
         @
       \end{block}
       \begin{figure}
@@ -220,9 +222,9 @@ options(replace.assign = TRUE,
 
       \begin{block}{2) Quality control}
 
-        We check on a PCA plot that (left) there is structure
-        (clusters) in the data and (right) that the markers defined
-        well resolved organelle clusters.
+        We verify on a PCA plot that there is structure in the data
+        (i.e we distinguish well defined clusters, left) and that the
+        markers defined well resolved organelle clusters (right).
 
         <<qc, eval=FALSE>>=
         plot2D(spat)
@@ -240,7 +242,7 @@ options(replace.assign = TRUE,
       \challenge{        
         Gatto \textit{et al.} \emph{Mass-spectrometry-based spatial
           proteomics data analysis using pRoloc and pRolocdata.}
-        Bioinformatics. 2014 May 1;30(9):1322-4. MID: 24413670.
+        Bioinformatics. 2014 May 1;30(9):1322-4. PMID: 24413670.
 
         \noindent Gatto \textit{et al.}  \emph{A foundation for
           reliable spatial proteomics data analysis.}  Mol Cell
@@ -258,14 +260,12 @@ options(replace.assign = TRUE,
 
     \end{column}
 
-
-
     \begin{column}{.48\textwidth}  
 
       \begin{block}{3) Novelty detection}
         
-        Our manually cureated markers do not cover the entire
-        sub-cellulare diversity. We use a semi-supervised machine
+        Our manually curated markers do not cover the entire
+        sub-cellular diversity. We use a semi-supervised machine
         learning algorithms to identify new putative organelle
         clusters, called \emph{phenotypes} (left), which require
         validation by the user (right).
@@ -285,10 +285,10 @@ plot2D(spat, fcol = "pd")
       \begin{block}{4) Classification}
 
         We can now classify unlabelled proteins to any of the
-        augmented classer using a supervised machine (SVM) learning
-        algorithms using, for example, a support vector machine
+        augmented classes using a supervised machine (SVM) learning
+        algorithms, for example, a support vector machine
         classifier. It is essential to tune the classification model
-        parameters (here $sigme$ and $cost$) prior to actual
+        parameters (here $sigma$ and $cost$) prior to actual
         classification (left).
 
         <<class, eval=FALSE, tidy = FALSE>>=
@@ -297,9 +297,9 @@ plot2D(spat, fcol = "pd")
         @ 
 
 The classification algorithm calculates classification probabilities
-that reflect the position of a protein to the decision boundaries
-defined by the SVM model (right). The data can be exported to a spreadsheet
-file.
+that reflect the distance of a protein to the decision boundaries
+defined by the SVM model (right). Eventually, the data can be exported
+to a spreadsheet file.
         
         <<res, eval=FALSE>>=
         ptsze <- exp(fData(spat)$svm.scores) - 1
@@ -341,10 +341,9 @@ file.
         \includegraphics[width=.5\linewidth]{./figures/gui2.png}
       \end{figure}
 
-      {\small This work was supported by the \textbf{European Union 7$^{th}$
-        Framework Program PRIME-XS project} and a \textbf{BBSRC Tools and
-        Resources Development Fund}
-.}
+      {\small This work was supported by the \textbf{European Union
+          7$^{th}$ Framework Program PRIME-XS project} and a
+        \textbf{BBSRC Tools and Resources Development Fund}.}
 
     \end{column}    
   \end{columns}
