@@ -21,6 +21,8 @@ LATEXFILES = *.aux\
 	*.run.xml\
 	*.makefile
 
+all: poster 
+
 .PHONY: clean poster
 
 ifeq (${R_HOME},)
@@ -29,6 +31,7 @@ endif
 
 HUPO2014_rbioc_poster.pdf: HUPO2014_rbioc_poster.Rnw
 	"$(R_HOME)/bin/R" --vanilla -e "knitr::knit2pdf('HUPO2014_rbioc_poster.Rnw')"
+	pdflatex HUPO2014_rbioc_poster.tex
 	pdflatex HUPO2014_rbioc_poster.tex
 
 poster: HUPO2014_rbioc_poster.pdf

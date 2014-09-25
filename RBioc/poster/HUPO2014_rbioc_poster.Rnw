@@ -44,7 +44,7 @@
 
 \newcommand{\challenge}[1]{
        \begin{tcolorbox}[notitle,boxrule=1pt,colback=blue!10,colframe=blue!25]
-         \textbf{Challenges}~{#1}
+         {#1}
        \end{tcolorbox}
 }
 
@@ -94,12 +94,11 @@
 
 \title[HUPO14 RBioc]{\huge A current perspective on using \R and Bioconductor for proteomics data analysis}
 
-\author[Gatto et al.]{\large L. Gatto$^{*, 1,2}$, S. Gibb$^{2,3}$}
+\author[Gatto et al.]{\large L. Gatto$^{*, 1,2}$, S. Gibb$^{1,3}$}
 
 \institute[CCP]{
   \begin{small}
-    $^1$Cambridge Centre for Proteomics, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
-    $^2$Computational Proteomics Unit, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
+    $^1$Computational Proteomics Unit and $^2$Cambridge Centre for Proteomics, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
     $^3$Department of Anesthesiology and Intensive Care, Medical Faculty Carl Gustav Carus, Technical University Dresden, Fetscherstr. 74, 01307 Dresden\\
     \bigskip
     $^{*}$\url{lg390@cam.ac.uk} -- \url{http://www.bio.cam.ac.uk/proteomics/}
@@ -123,11 +122,10 @@ opts_chunk$set(fig.align = 'center',
 options(replace.assign = TRUE,
         width = 50)
 
-set.seed(1)
-
-suppressPackageStartupMessages(library("MSnbase"))
-suppressPackageStartupMessages(library("mzR"))
-suppressPackageStartupMessages(library("mzID"))
+## set.seed(1)
+## suppressPackageStartupMessages(library("MSnbase"))
+## suppressPackageStartupMessages(library("mzR"))
+## suppressPackageStartupMessages(library("mzID"))
 @
 %%$
 
@@ -143,24 +141,36 @@ suppressPackageStartupMessages(library("mzID"))
     \begin{column}{.48\textwidth}
      \begin{block}{Introduction}
        \justifying
-     \end{block}
 
-     \begin{block}{Bioconductor package submissions and downloads}
+       The \R statistical environment and programming language is a
+       key player in many domains that require robust data
+       analysis. The Bioconductor project offer a wide range of \R
+       packages dedicated to the analysis and comprehension of high
+       throughput biology. Originally focused on genomics,
+       R/Bioconductor are gaining increasing attention in the
+       proteomics, metabolomics and mass spectrometry communities, as
+       reflected by the download statistics and package contributions.
+
       \begin{figure}[h]
-        \begin{subfigure}[b]{0.49\linewidth}
+        \begin{subfigure}[b]{0.44\linewidth}
           \includegraphics[width=\linewidth]{figures/development_biocviews_sep2014}
         \end{subfigure}
-        \begin{subfigure}[b]{0.49\linewidth}
+        \begin{subfigure}[b]{0.44\linewidth}
           \includegraphics[width=\linewidth]{figures/downloads_biocviews_sep2014}
         \end{subfigure}
         \label{fig:biocviews}
-        \caption{The left figure shows the growing number of packages on
-        Bioconductor in the BiocViews \emph{Proteomics, MassSpectrometry} and
-        \emph{MassSpectrometryData}. On the right figure the number of distinct
-        package downloads in these BiocViews are depicted (please note that
-        the data for Bioc 2.12 are interpolated because of server problems in
-        this time period).}
+        \caption{The left figure shows the number of Bioconductor
+          packages dedicated to \emph{Proteomics},
+          \emph{MassSpectrometry} and \emph{MassSpectrometryData}
+          packages on Bioconductor in the BiocViews . On the right
+          figure, we show the number of distinct package
+          downloads. Note that the current version, 2.14 currently
+          encounters downloads. (NB: the data for Bioc 2.12 are
+          interpolated due to massive scripted downloads).}
       \end{figure}
+      
+      Here, we present an overview of current Bioconductor
+      infrastructure dedicated to proteomics and mass spectrometry.
 
      \end{block}
      \vfill
@@ -171,16 +181,20 @@ suppressPackageStartupMessages(library("mzID"))
        standards and formats for MS data (e.g. \texttt{mzML}, \texttt{mzIdentML})
        to overcome the shortcomings of closed, binary vendor-specific formats.}
 
-       One of the main projects that implement parsers for the XML-based
-       open formats is the \texttt{C++} proteowizard project
-       \cite{Chambers2012}, which is interfaced by the
-       \Rpackage{mzR} Bioconductor package using the \Rpackage{Rcpp}
-       infrastructure.
+     One of the main projects that implement parsers for the XML-based
+     open formats is the \texttt{C++} proteowizard project
+     \cite{Chambers2012}, which is interfaced by the \Rpackage{mzR}
+     Bioconductor package using the \Rpackage{Rcpp} infrastructure for
+     raw and (starting with Bioconductor version 3.0) identification
+     data. \texttt{mzIdentML} files can also be parsed with the
+     \Rpackage{mzID} package.
 
-<<mzR>>=
+<<mzR, eval=FALSE>>=
 library("mzR")
-fname <- dir(system.file(package="MSnbase", dir="extdata"), full.name=TRUE, pattern="mzXML$")
-ms <- openMSfile(fname)
+ms <- openMSfile("raw_data.raw")
+id <- openIDfile("msgf-res.mzid")
+library("mzID")
+id2 <- openIDfile("msgf-res2.mzid")
 @
 
        The resulting \Robject{ms} object is a file handle that allows fast
@@ -190,7 +204,7 @@ ms <- openMSfile(fname)
      \end{block}
      \bigskip
 
-     \begin{block}{Labelled quantitation}
+     \begin{block}{}
        \justifying
        \secintro{The same raw data file can be imported in a convenient higher level container and
        directly processed, plotted, quantified and normalised with the \Rpackage{MSnbase} \cite{msnbase} software.}
@@ -202,22 +216,22 @@ set <- quantify(exp, method = "trap", reporters = iTRAQ4, verbose = FALSE, paral
 head(exprs(set), n = 3)
 @
 
-      \begin{figure}[h]
-        \centering
-        \begin{subfigure}[b]{0.55\linewidth}
-          \centering
-          \includegraphics[width=\linewidth]{figures/plotspectrum}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.44\linewidth}
-          \includegraphics[width=\linewidth]{figures/spikes} \\
-          \includegraphics[width=\linewidth]{figures/plotmzdelta}
-        \end{subfigure}
-        \label{fig:msnbase}
-        \caption{MS$^2$ spectrum of an iTRAQ 4-plex experiment highlighting the 4 isobaric reporter ions,
-          as produced by \Rfunction{plot} above (left). Peptides of interest from a spiked-in experiment
-          (top right) and distribution of the \textit{m/z} differences of all MS$^2$ spectra from the same
-          experiment, used as a peptide-spectrum matching quality assessment (bottom right).}
-      \end{figure}
+      % \begin{figure}[h]
+      %   \centering
+      %   \begin{subfigure}[b]{0.55\linewidth}
+      %     \centering
+      %     \includegraphics[width=\linewidth]{figures/plotspectrum}
+      %   \end{subfigure}
+      %   \begin{subfigure}[b]{0.44\linewidth}
+      %     \includegraphics[width=\linewidth]{figures/spikes} \\
+      %     \includegraphics[width=\linewidth]{figures/plotmzdelta}
+      %   \end{subfigure}
+      %   \label{fig:msnbase}
+      %   \caption{MS$^2$ spectrum of an iTRAQ 4-plex experiment highlighting the 4 isobaric reporter ions,
+      %     as produced by \Rfunction{plot} above (left). Peptides of interest from a spiked-in experiment
+      %     (top right) and distribution of the \textit{m/z} differences of all MS$^2$ spectra from the same
+      %     experiment, used as a peptide-spectrum matching quality assessment (bottom right).}
+      % \end{figure}
       \bigskip
 
      \end{block}
@@ -241,19 +255,19 @@ head(exprs(set), n = 3)
           The latter provides a complete pipeline, including
           baseline subtraction, smoothing, peak detection and alignment using warping functions,
           handling of replicated measurements as well as allowing spectra with different resolutions.
-          \begin{figure}[h]
-            %% please find the script to create this figure at
-            %% https://github.com/sgibb/MALDIquantExamples/blob/master/createFigure1_color.R
-            \includegraphics[width=\textwidth]{figures/mqplot2}
-            \label{fig:mq}
-            \caption{Illustration of the \Rpackage{MALDIquant} pipeline:
-              raw spectrum with estimate baseline (A);
-              variance-stabilised, smoothed, baseline-corrected spectrum with detected peaks (B);
-              fitted warping function for peak alignment (C);
-              four unaligned peaks (D);
-              four aligned peaks (E);
-              merged spectrum with discovered and labelled peaks (F).}
-          \end{figure}
+          % \begin{figure}[h]
+          %   %% please find the script to create this figure at
+          %   %% https://github.com/sgibb/MALDIquantExamples/blob/master/createFigure1_color.R
+          %   \includegraphics[width=\textwidth]{figures/mqplot2}
+          %   \label{fig:mq}
+          %   \caption{Illustration of the \Rpackage{MALDIquant} pipeline:
+          %     raw spectrum with estimate baseline (A);
+          %     variance-stabilised, smoothed, baseline-corrected spectrum with detected peaks (B);
+          %     fitted warping function for peak alignment (C);
+          %     four unaligned peaks (D);
+          %     four aligned peaks (E);
+          %     merged spectrum with discovered and labelled peaks (F).}
+          % \end{figure}
 
           A complete pipeline for MS$^E$ data independent acquisition, including support for ion mobility separation
           is available in the \Rpackage{synapter} package \cite{synapter} that, among other features,
@@ -351,6 +365,15 @@ ident <- mzID("identification.mzid")
           \emph{XCMS: Processing mass spectrometry data for metabolite profiling using nonlinear peak alignment, matching and identification}.
           Analytical Chemistry 2006 %% 78:779-787
           PMID: 16448051.
+          
+          \challenge{
+            \begin{description}
+            \justifying            
+            \item[R] \url{http://www.r-project.org/}
+            \item[Bioconductor] \url{http://bioconductor.org/}
+            \item[RforProteomics]\url{http://is.gd/R4Proteomics}
+            \end{description}
+          }
 
         \end{thebibliography}
       \end{block}
