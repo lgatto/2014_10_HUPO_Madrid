@@ -266,9 +266,10 @@ options(replace.assign = TRUE,
         
         Our manually curated markers do not cover the entire
         sub-cellular diversity. We use a semi-supervised machine
-        learning algorithms to identify new putative organelle
-        clusters, called \emph{phenotypes} (left), which require
-        validation by the user (right).
+        learning algorithms (Breckels \textit{et al.}, J
+        Proteomics. 2013 Aug 2;88:129-40.) to identify new putative
+        organelle clusters, called \emph{phenotypes} (left), which
+        require validation by the user (right).
 
 <<pd, eval=FALSE>>=
 spat <- phenoDisco(spat)
