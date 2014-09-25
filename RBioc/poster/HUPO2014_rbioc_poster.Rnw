@@ -204,42 +204,20 @@ id2 <- openIDfile("msgf-res2.mzid")
      \end{block}
      \bigskip
 
-     \begin{block}{}
+     \begin{block}{Identification}
        \justifying
-       \secintro{The same raw data file can be imported in a convenient higher level container and
-       directly processed, plotted, quantified and normalised with the \Rpackage{MSnbase} \cite{msnbase} software.}
-
-<<msnbase, eval = FALSE>>=
-exp <- readMSData(fname, verbose = FALSE)
-plot(exp[["X3.1"]], full = TRUE, reporters = iTRAQ4)
-set <- quantify(exp, method = "trap", reporters = iTRAQ4, verbose = FALSE, parallel = TRUE)
-head(exprs(set), n = 3)
-@
-
-      % \begin{figure}[h]
-      %   \centering
-      %   \begin{subfigure}[b]{0.55\linewidth}
-      %     \centering
-      %     \includegraphics[width=\linewidth]{figures/plotspectrum}
-      %   \end{subfigure}
-      %   \begin{subfigure}[b]{0.44\linewidth}
-      %     \includegraphics[width=\linewidth]{figures/spikes} \\
-      %     \includegraphics[width=\linewidth]{figures/plotmzdelta}
-      %   \end{subfigure}
-      %   \label{fig:msnbase}
-      %   \caption{MS$^2$ spectrum of an iTRAQ 4-plex experiment highlighting the 4 isobaric reporter ions,
-      %     as produced by \Rfunction{plot} above (left). Peptides of interest from a spiked-in experiment
-      %     (top right) and distribution of the \textit{m/z} differences of all MS$^2$ spectra from the same
-      %     experiment, used as a peptide-spectrum matching quality assessment (bottom right).}
-      % \end{figure}
-      \bigskip
+       \secintro{Running search engines in \R and parsing identification files.}
+       \Rpackage{mzID}, (\Rpackage{mzR}), \Rpackage{MSnID}, 
+       \Rpackage{rTANDEM}, (\Rpackage{MSGFplus})
 
      \end{block}
 
-
+      \begin{block}{Quantitation}
+        \justifying
+        \secintro{Quantitative proteomcs in \R.}
+        \Rpackage{MSnbase}, \Rpackage{MALDIquant}, \Rpackage{synapter}
+      \end{block}
     \end{column}
-
-
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% second column %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -247,103 +225,43 @@ head(exprs(set), n = 3)
 
     \begin{column}{.48\textwidth}
 
-      \begin{block}{Label-free quantitation}
-        \justifying
-        \secintro{Support for data dependent label-free quantitation is available, among others, in the
-        \Rpackage{MSnbase} \cite{msnbase}, \Rpackage{xcms} \cite{xcms} and \Rpackage{MALDIquant} \cite{maldiquant} packages.}
-        %% \begin{Leftbar}
-          The latter provides a complete pipeline, including
-          baseline subtraction, smoothing, peak detection and alignment using warping functions,
-          handling of replicated measurements as well as allowing spectra with different resolutions.
-          % \begin{figure}[h]
-          %   %% please find the script to create this figure at
-          %   %% https://github.com/sgibb/MALDIquantExamples/blob/master/createFigure1_color.R
-          %   \includegraphics[width=\textwidth]{figures/mqplot2}
-          %   \label{fig:mq}
-          %   \caption{Illustration of the \Rpackage{MALDIquant} pipeline:
-          %     raw spectrum with estimate baseline (A);
-          %     variance-stabilised, smoothed, baseline-corrected spectrum with detected peaks (B);
-          %     fitted warping function for peak alignment (C);
-          %     four unaligned peaks (D);
-          %     four aligned peaks (E);
-          %     merged spectrum with discovered and labelled peaks (F).}
-          % \end{figure}
-
-          A complete pipeline for MS$^E$ data independent acquisition, including support for ion mobility separation
-          is available in the \Rpackage{synapter} package \cite{synapter} that, among other features,
-          transfers identification between acquisitions to substantially reduce missing values.
-        \bigskip
-      \end{block}
-
-      \begin{block}{Peptide identification}
-        \justifying
-        \secintro{The recently released \Rpackage{rTANDEM} package encapsulates
-        the \texttt{X!Tandem} \cite{tandem} search engine in \texttt{R}.}
-          It uses the same XML-based parameter files as the native application
-          or dedicated \R parameter object.
-          Result files can be directly parsed and mined in \R.
-
-<<rtandem, eval = FALSE, tidy = FALSE>>=
-xmlres <- rtandem(spectra.mgf, taxon = "yeast",
-                  taxonomy = "taxonomy.xml",
-                  default.parameters = "default-params.xml")
-## or xmlres <- tandem(param)
-res <- GetResultsFromXML(xmlres)
-proteins <- GetProteins(res) ## data.table objects
-peptides <- GetPeptides(res)
-@
-          \secintro{
-          The latest \texttt{mzR} and the \texttt{mzID} packages offer support
-          for \texttt{mzIdentML} files and allow to import identification data
-          from most commonly used search engines.}
-
-<<mzid, eval = FALSE, tidy = FALSE>>=
-library("mzR")
-ident <- openIDfile("identification.mzid")
-# or
-library("mzID")
-ident <- mzID("identification.mzid")
-@
+      \begin{block}{Visualisation}
+        \justifying \secintro{\R excels in graphics. It also allows to
+          easily program interactive visualisation interfaces.}
+        A figure from the vis paper, a \Rpackage{shiny} GUI example.
 
       \end{block}
 
       \vfill
 
-      \begin{block}{Statistics}
+      \begin{block}{Data processing, statistics and machine learning}
         \justifying
-        While there exists a lot of excellent packages for differential
-        expression tests in \R \texttt{MSstats} \cite{msstats} and
-        \texttt{msmsTests} offer tests that are well integrated into the
-        \texttt{MSnbase} ecosystem.
 
-<<msstats, eval = FALSE, tidy = FALSE>>=
-## MSstats/msTests example?
-@
+        \secintro{As an environment for statistical computing, the
+          very best of data processing, statistical modelling and
+          machine learning is readily available.}  
+
+        \Rpackage{MSnbase}, \Rpackage{isobar}, \Rpackage{MSstats},
+        \Rpackage{msmsTests},
+
       \end{block}
 
       \vfill
+
+      \begin{block}{Misc}
+        Any other applications: PTMs, spatial proteomics, ...
+      \end{block}
 
       \begin{block}{}
-        \justifying
-        \tiny
+        \challenge{
 
         \begin{thebibliography}{6}
 
-        \bibitem{synapter} Bond NJ \textit{et al.}
-          \emph{Improving Qualitative and Quantitative Performance for MS$^E$-based Label-free Proteomics}.
-          J Proteome Res. 2013 %% Jun 7;12(6):2340-53. doi: 10.1021/pr300776t. Epub 2013 Apr 17.
-          PMID: 23510225.
-
-        \bibitem{Chambers2012} Chambers M \textit{et al.}
-          \emph{A cross-platform toolkit for mass spectrometry and proteomics}.
-          Nat Biotechnol. 2012 %% Oct;30(10):918-20. doi: 10.1038/nbt.2377.
-          PMID: 23051804.
-
-        \bibitem{msstats} Choi M \textit{et al.}
-          \emph{MSstats: an R package for statistical analysis of quantitative
-          mass spectrometry-based proteomic experiments}.
-          Bioinformatics. 2014 %% doi:10.1093/bioinformatics/btu305
-          PMID: 24794931.
+        % \bibitem{msstats} Choi M \textit{et al.}
+        %   \emph{MSstats: an R package for statistical analysis of quantitative
+        %   mass spectrometry-based proteomic experiments}.
+        %   Bioinformatics. 2014 %% doi:10.1093/bioinformatics/btu305
+        %   PMID: 24794931.
 
 
         \bibitem{r4p} Gatto L and Christoforou A
@@ -351,31 +269,27 @@ ident <- mzID("identification.mzid")
           Biochim Biophys Acta. 2013 %% May 18. doi:pii: S1570-9639(13)00186-6.10.1016/j.bbapap.2013.04.032.
           PMID: 23692960.
 
-        \bibitem{msnbase} Gatto L and Lilley KS
-          \emph{MSnbase-an R/Bioconductor package for isobaric tagged mass spectrometry data visualization, processing and quantitation}.
-          Bioinformatics. 2012 %% Jan; 28:(2)288-9
-          PMID: 22113085.
+        % \bibitem{msnbase} Gatto L and Lilley KS
+        %   \emph{MSnbase-an R/Bioconductor package for isobaric tagged mass spectrometry data visualization, processing and quantitation}.
+        %   Bioinformatics. 2012 %% Jan; 28:(2)288-9
+        %   PMID: 22113085.
 
-        \bibitem{maldiquant} Gibb S and Strimmer K
-          \emph{MALDIquant: a versatile R package for the analysis of mass spectrometry data.}
-          Bioinformatics. 2012 %% Sep; 28:(17)2270-1
-          PMID: 22796955.
+        % \bibitem{maldiquant} Gibb S and Strimmer K
+        %   \emph{MALDIquant: a versatile R package for the analysis of mass spectrometry data.}
+        %   Bioinformatics. 2012 %% Sep; 28:(17)2270-1
+        %   PMID: 22796955.
 
-        \bibitem{xcms} Smith CA \textit{et al.}
-          \emph{XCMS: Processing mass spectrometry data for metabolite profiling using nonlinear peak alignment, matching and identification}.
-          Analytical Chemistry 2006 %% 78:779-787
-          PMID: 16448051.
+          \begin{description}
+          \item[R] \url{http://www.r-project.org/}
+          \item[Bioconductor] \url{http://bioconductor.org/}
+          \item[RforProteomics]\url{http://is.gd/R4Proteomics}
+          \item[Google group]
+          \item[Support site]
+          \end{description}
           
-          \challenge{
-            \begin{description}
-            \justifying            
-            \item[R] \url{http://www.r-project.org/}
-            \item[Bioconductor] \url{http://bioconductor.org/}
-            \item[RforProteomics]\url{http://is.gd/R4Proteomics}
-            \end{description}
-          }
-
         \end{thebibliography}
+      }
+
       \end{block}
 
       %% \vspace{2mm}
