@@ -42,3 +42,4 @@ clean:
 	rm -f *~
 	rm -f $(LATEXFILES)
 	rm -f .Rhistory .Makefile.swp
+	rm -f HUPO_2014_poster.tex

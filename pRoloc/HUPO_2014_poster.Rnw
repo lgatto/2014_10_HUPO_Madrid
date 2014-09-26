@@ -234,8 +234,9 @@ options(replace.assign = TRUE,
       \end{block}
       \begin{figure}
         \centering
-        \includegraphics[width=.49\linewidth]{./figures/pca1.pdf}
-        \includegraphics[width=.49\linewidth]{./figures/pca2.pdf}
+        \includegraphics[width=.44\linewidth]{./figures/pca1.pdf}
+        \hspace{1cm}
+        \includegraphics[width=.44\linewidth]{./figures/pca2.pdf}
       \end{figure}
 
 
@@ -253,7 +254,8 @@ options(replace.assign = TRUE,
         \item[software] \url{http://is.gd/pRoloc}
         \item[documentation] \url{http://is.gd/pRoloc_tutorial}
         \item[GUI] \url{http://is.gd/pRolocGUI}
-        \item[data] \url{http://is.gd/pRolocdata}  
+        \item[data] \url{http://is.gd/pRolocdata}
+        \item[Videos] \url{is.gd/R4ProteomicsVideos}
         \end{description}
         \vspace{2mm}
     }
