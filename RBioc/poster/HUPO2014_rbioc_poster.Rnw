@@ -153,10 +153,10 @@ options(replace.assign = TRUE,
 
       \begin{figure}[h]
         \begin{subfigure}[b]{0.44\linewidth}
-          \includegraphics[width=\linewidth]{figures/development_biocviews_sep2014}
+          \includegraphics[width=\linewidth]{figures/development_biocviews.pdf}
         \end{subfigure}
         \begin{subfigure}[b]{0.44\linewidth}
-          \includegraphics[width=\linewidth]{figures/downloads_biocviews_sep2014}
+          \includegraphics[width=\linewidth]{figures/downloads_biocviews.pdf}
         \end{subfigure}
         \label{fig:biocviews}
         \caption{The left figure shows the number of Bioconductor
@@ -182,12 +182,12 @@ options(replace.assign = TRUE,
        to overcome the shortcomings of closed, binary vendor-specific formats.}
 
      One of the main projects that implement parsers for the XML-based
-     open formats is the \texttt{C++} proteowizard project
-     \cite{Chambers2012}, which is interfaced by the \Rpackage{mzR}
-     Bioconductor package using the \Rpackage{Rcpp} infrastructure for
-     raw and (starting with Bioconductor version 3.0) identification
-     data. \texttt{mzIdentML} files can also be parsed with the
-     \Rpackage{mzID} package.
+     open formats is the \texttt{C++} proteowizard project (Chambers
+     \textit{et al.} Nat Biotechnol. 2012 Oct;30(10):918-20), which is
+     interfaced by the \Rpackage{mzR} Bioconductor package using the
+     \Rpackage{Rcpp} infrastructure for fast raw and (starting with
+     Bioconductor version 3.0) identification data. \texttt{mzIdentML}
+     files can also be parsed with the \Rpackage{mzID} package.
 
 <<mzR, eval=FALSE>>=
 library("mzR")
@@ -205,18 +205,39 @@ id2 <- openIDfile("msgf-res2.mzid")
      \bigskip
 
      \begin{block}{Identification}
-       \justifying
-       \secintro{Running search engines in \R and parsing identification files.}
-       \Rpackage{mzID}, (\Rpackage{mzR}), \Rpackage{MSnID}, 
-       \Rpackage{rTANDEM}, (\Rpackage{MSGFplus})
+       \justifying \secintro{\R/Bioconductor provide software to parse
+         \texttt{mzIdentML} files (\Rpackage{mzID} and
+         \Rpackage{mzR}, see above), directly run identification \R
+         (\Rpackage{rTANDEM}, \Rpackage{MSGFplus}) and optimise FDR
+         calculations based on decoy searches (\Rpackage{MSnID})}
+<<ident>>=
+## an MSnID chunk
+@
 
      \end{block}
 
-      \begin{block}{Quantitation}
-        \justifying
-        \secintro{Quantitative proteomcs in \R.}
-        \Rpackage{MSnbase}, \Rpackage{MALDIquant}, \Rpackage{synapter}
+      \begin{block}{MS data processing}
+        \secintro{MS spectrum processing is available in multiple
+          packages, optimised for specific use cases and pipelines:
+          \Rpackage{MSnbase}, \Rpackage{xcms}, \Rpackage{MALDIquant}.}
+
+      \begin{figure}[h]
+          \includegraphics[width=.9\linewidth]{figures/mqpreproc.pdf}
+        \label{fig:msproc}
+        \caption{Illustration of the \texttt{MALDIquant} preprocessing
+          pipeline. The first figure (A) shows a raw spectrum with the
+          estimated baseline. In the second figure (B) the spectrum is
+          variance-stabilised, smoothed, baseline-corrected and the
+          detected peaks are marked with blue crosses. The third
+          figure (C) is an example of a fitted warping function for
+          peak alignment. In the next figures, four peaks are shown
+          before (D) and after (E) performing the alignment. The last
+          figure (F) represents a merged spectrum with discovered and
+          labelled peaks.}
+      \end{figure}
+        
       \end{block}
+
     \end{column}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -224,6 +245,17 @@ id2 <- openIDfile("msgf-res2.mzid")
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     \begin{column}{.48\textwidth}
+
+      \begin{block}{Quantitation}
+        \justifying \secintro{Several quantitation pipelines are
+          supported: \Rpackage{MSnbase} and \Rpackage{isobar} for
+          isobaric tagging such as iTRAQ and TMT,
+          \Rpackage{MALDIquant} for MALDI data, \Rpackage{MSnbase} for
+          spectra couting and other MS$^2$ label free methods and
+          \Rpackage{synapter} supports a DIA complete pipeline,
+           including ion mobility separation on Waters Synapt
+          instruments.}
+      \end{block}
 
       \begin{block}{Visualisation}
         \justifying \secintro{\R excels in graphics. It also allows to
@@ -283,8 +315,8 @@ id2 <- openIDfile("msgf-res2.mzid")
           \item[R] \url{http://www.r-project.org/}
           \item[Bioconductor] \url{http://bioconductor.org/}
           \item[RforProteomics]\url{http://is.gd/R4Proteomics}
-          \item[Google group]
-          \item[Support site]
+          \item[Google group] \url{https://is.gd/rbioc_sig_proteomics}
+          \item[Support site] \url{https://support.bioconductor.org}
           \end{description}
           
         \end{thebibliography}

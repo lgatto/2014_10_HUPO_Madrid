@@ -21,8 +21,7 @@ createBiocViewFigure <- function(views, biocVersions,
   }
 
   invisible(plotCountsVsVersions(counts, views=views, labels=biocVersions,
-                                 main="Development of BiocViews of time",
-                                 ylab="Number of Packages", cols=cols))
+                                 ylab="Number of Bioconductor packages", cols=cols))
 }
 
 ## run the following
@@ -30,7 +29,7 @@ versions <- paste(2, 6:14, sep=".")
 labels <- paste(versions, biocDates[match(versions, biocVersions)], sep="\n")
 views <- c("Proteomics", "MassSpectrometry", "MassSpectrometryData")
 
-pdf(file.path("..", "poster", "figures", "development_biocviews_sep2014.pdf"))
+pdf(file.path("..", "poster", "figures", "development_biocviews.pdf"))
 counts <- createBiocViewFigure(views=views,
                                rep=c("BioCsoft", "BioCsoft", "BioCexp"),
                                biocVersions=versions, labels=labels)
@@ -41,4 +40,4 @@ colnames(counts) <- views
 
 dir.create(file.path("..", "output"), showWarnings = FALSE)
 write.csv(counts,
-          file=file.path("..", "output", "development_biocviews_sep2014.csv"))
+          file=file.path("..", "output", "development_biocviews.csv"))

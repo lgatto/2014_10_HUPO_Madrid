@@ -1,9 +1,10 @@
-* A state-of-the-art machine learning pipeline for the analysis of organelle proteomics data
+#+TITLE: A state-of-the-art machine learning pipeline for the analysis of organelle proteomics data
+#+OPTIONS: toc:nil
 
-Laurent Gatto [1,2], Lisa M. Breckels [1,2], Samuel Wieczorek [3], Thomas Burger [3] and Kathryn S. Lilley [2]
+Laurent Gatto[1][2], Lisa M. Breckels[1][2], Thomas Naake[1][2], Samuel Wieczorek[3], Thomas Burger[3] and Kathryn S. Lilley[2]
 
-[1] Computational Proteomics Unit, Department of Biochemistry, University of Cambridge, Cambridge, UK
-[2] Cambridge Centre for Proteomics, Department of Biochemistry, University of Cambridge, Cambridge, UK
+[1] [[http://cpu.sysbiol.cam.ac.uk][Computational Proteomics Unit]], Department of Biochemistry, University of Cambridge, Cambridge, UK
+[2] [[http://proteomics.bio.cam.ac.uk][Cambridge Centre for Proteomics]], Department of Biochemistry, University of Cambridge, Cambridge, UK
 [3] Universite Grenoble-Alpes, CEA (iRSTV/BGE), INSERM (U1038), CNRS (FR3425), 38054 Grenoble, France
 
 ** Introduction and objectives 
@@ -13,16 +14,16 @@ of protein sub-cellular localisation. Here, we focus on high-throughput
 quantitative mass spectrometry-based techniques such as LOPIT and PCP
 and demonstrate a robust and sound analysis pipeline using
 state-of-the-art and novel machine learning algorithms implemented in
-the pRoloc [1] R/Bioconductor package.
+the pRoloc[4][5] R/Bioconductor package.
 
 ** Methods
 
 We illustrate the pipeline using relevant real-world data sets
-available from the pRolocdata package [1], documenting importing data
+available from the pRolocdata package[4], documenting importing data
 available in spreadsheet formats into the R environment, missing data
 imputation, data quality control, facilitated organelle marker
 assignment, protein clustering, identification of new, non-labelled
-organelles using semi-supervised machine learning [2], protein
+organelles using semi-supervised machine learning[6], protein
 classification and data visualisation.
 
 ** Results and Discussion
@@ -48,5 +49,16 @@ applied on well-defined and annotated data in a coherent, traceable
 and reproducible pipeline.
 
 
-[1] Gatto, L. et al. Bioinformatics 2014, In press.
-[2] Breckels LM. et al. J Proteomics. 2013, 2(88), 129-40.
+** Ressources
+
+- *software* [[http://is.gd/pRoloc]]
+- *documentatio* [[http://is.gd/pRoloc_tutorial]]
+- *GUI* [[http://is.gd/pRolocGUI]]
+- *data* [[http://is.gd/pRolocdata]]
+- *Videos* [[http://is.gd/R4ProteomicsVideos]]
+
+
+[4] [[http://bioinformatics.oxfordjournals.org/content/30/9/1322][Gatto L . /et al./ Bioinformatics. 2014 1;30(9):1322-4.]]
+[5] [[http://www.mcponline.org./content/early/2014/05/20/mcp.M113.036350.abstract][Gatto L. /et al./ MCP 2014 Aug;13(8):1937-52.]]
+[6] [[http://www.ncbi.nlm.nih.gov/pubmed/23523639][Breckels LM. /et al./ J Proteomics. 2013, 2(88), 129-40.]]
+

@@ -255,7 +255,7 @@ options(replace.assign = TRUE,
         \item[documentation] \url{http://is.gd/pRoloc_tutorial}
         \item[GUI] \url{http://is.gd/pRolocGUI}
         \item[data] \url{http://is.gd/pRolocdata}
-        \item[Videos] \url{is.gd/R4ProteomicsVideos}
+        \item[Videos] \url{http://is.gd/R4ProteomicsVideos}
         \end{description}
         \vspace{2mm}
     }

@@ -3,7 +3,7 @@ source("biocView-functions.R")
 source("plot-functions.R")
 
 ## load bioc downloads
-df <- read.csv(gzfile(file.path("..", "data", "biocdownloads_2014-09-09.csv.gz")),
+df <- read.csv(gzfile(file.path("..", "data", "biocdownloads.csv.gz")),
                stringsAsFactors=FALSE, header=FALSE)
 
 colnames(df) <- c("pkgversion", "biocversion", "utc_offset", "protocol",
@@ -66,8 +66,7 @@ createBiocViewDownloadFigure <- function(downloadDf, views, biocVersions,
   }
 
   invisible(plotCountsVsVersions(counts, views, labels=biocVersions,
-                                 main="Development of BiocViews of time",
-                                 ylab="Number of Downloads", cols=cols))
+                                 ylab="Package downloads", cols=cols))
 }
 
 ## run the following
@@ -75,7 +74,7 @@ versions <- paste(2, 6:14, sep=".")
 labels <- paste(versions, biocDates[match(versions, biocVersions)], sep="\n")
 views <- c("Proteomics", "MassSpectrometry")
 
-pdf(file.path("..", "poster", "figures", "downloads_biocviews_sep2014.pdf"))
+pdf(file.path("..", "poster", "figures", "downloads_biocviews.pdf"))
 counts <- createBiocViewDownloadFigure(df, views=views, biocVersions=versions,
                                        labels=labels, cols=2:3)
 dev.off()
@@ -85,4 +84,4 @@ colnames(counts) <- views
 
 dir.create(file.path("..", "output"), showWarnings = FALSE)
 write.csv(counts,
-          file=file.path("..", "output", "downloads_biocviews_sep2014.csv"))
+          file=file.path("..", "output", "downloads_biocviews.csv"))
