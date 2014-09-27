@@ -3,6 +3,7 @@
 %\VignetteKeywords{bioinformatics, spatial proteomics, mass spectrometry}
 
 \documentclass[final]{beamer} 
+\usepackage{ragged2e} 
 
 \mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
   %% \usetheme{CCP}
@@ -170,11 +171,15 @@ options(replace.assign = TRUE,
         \begin{block}{Introduction}     
           \vspace{3mm}
           \begin{large}
+            Organelle proteomics, or spatial proteomics, is the
+            systematic study of proteins and their assignment to
+            subcellular niches including organelles.
             \Rpackage{pRoloc} and \Rpackage{pRolocGUI} are
             \texttt{R}/Bioconductor packages that implement all the
             necessary tools for the sound and reproducible analysis
             and interactive exploration of spatial proteomics data
-            from any type of experiment.
+            from any type of experiment such as LOPIT, PCP or
+            PCP-SILAC.
             \end{large}
 
           \bigskip 
@@ -216,13 +221,13 @@ options(replace.assign = TRUE,
       \end{block}
       \begin{figure}
         \centering
-        \includegraphics[width=.75\linewidth]{./figures/Fig1-data-a.pdf}
+        \includegraphics[width=.6\linewidth]{./figures/Fig1-data-a.pdf}
       \end{figure}
       \bigskip
 
       \begin{block}{2) Quality control}
 
-        We verify on a PCA plot that there is structure in the data
+        We verify on PCA plots that there is structure in the data
         (i.e we distinguish well defined clusters, left) and that the
         markers defined well resolved organelle clusters (right).
 
@@ -243,20 +248,28 @@ options(replace.assign = TRUE,
       \challenge{        
         Gatto \textit{et al.} \emph{Mass-spectrometry-based spatial
           proteomics data analysis using pRoloc and pRolocdata.}
-        Bioinformatics. 2014 May 1;30(9):1322-4. PMID: 24413670.
+        Bioinformatics. 2014 May 1;30(9):1322-4.
 
         \noindent Gatto \textit{et al.}  \emph{A foundation for
           reliable spatial proteomics data analysis.}  Mol Cell
-        Proteomics. 2014 Aug;13(8):1937-52. PMID: 24846987.
+        Proteomics. 2014 Aug;13(8):1937-52.
 
         \vspace{2mm}
-        \begin{description}
-        \item[software] \url{http://is.gd/pRoloc}
-        \item[documentation] \url{http://is.gd/pRoloc_tutorial}
-        \item[GUI] \url{http://is.gd/pRolocGUI}
-        \item[data] \url{http://is.gd/pRolocdata}
-        \item[Videos] \url{http://is.gd/R4ProteomicsVideos}
-        \end{description}
+
+        \begin{columns}
+          \begin{column}{.75\textwidth}
+            \begin{description}
+            \item[software] \url{http://is.gd/pRoloc}
+            \item[documentation] \url{http://is.gd/pRoloc_tutorial}
+            \item[GUI] \url{http://is.gd/pRolocGUI}
+            \item[data] \url{http://is.gd/pRolocdata}
+            \item[Videos] \url{http://is.gd/R4ProteomicsVideos}
+            \end{description}
+          \end{column}
+          \begin{column}{.2\textwidth}
+            \includegraphics[width=.9\linewidth]{./figures/pRoloc_QA.png}
+          \end{column}
+        \end{columns}
         \vspace{2mm}
     }
 
@@ -343,11 +356,14 @@ to a spreadsheet file.
         \includegraphics[width=.5\linewidth]{./figures/gui1.png}
         \includegraphics[width=.5\linewidth]{./figures/gui2.png}
       \end{figure}
+      
+      \vspace{1.5cm}
 
       {\small This work was supported by the \textbf{European Union
           7$^{th}$ Framework Program PRIME-XS project} and a
         \textbf{BBSRC Tools and Resources Development Fund}.}
 
+      \vfill
     \end{column}    
   \end{columns}
 \end{frame}

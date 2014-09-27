@@ -1,7 +1,9 @@
-#+TITLE: A state-of-the-art machine learning pipeline for the analysis of organelle proteomics data
+#+TITLE: A state-of-the-art machine learning pipeline for the analysis of spatial proteomics data
 #+OPTIONS: toc:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/style0.css" />
 
-Laurent Gatto[1][2], Lisa M. Breckels[1][2], Thomas Naake[1][2], Samuel Wieczorek[3], Thomas Burger[3] and Kathryn S. Lilley[2]
+
+[[http://cpu.sysbiol.cam.ac.uk][Laurent Gatto]][1][2], Lisa M. Breckels[1][2], Thomas Naake[1][2], Samuel Wieczorek[3], Thomas Burger[3] and Kathryn S. Lilley[2]
 
 [1] [[http://cpu.sysbiol.cam.ac.uk][Computational Proteomics Unit]], Department of Biochemistry, University of Cambridge, Cambridge, UK
 [2] [[http://proteomics.bio.cam.ac.uk][Cambridge Centre for Proteomics]], Department of Biochemistry, University of Cambridge, Cambridge, UK
@@ -52,7 +54,7 @@ and reproducible pipeline.
 ** Ressources
 
 - *software* [[http://is.gd/pRoloc]]
-- *documentatio* [[http://is.gd/pRoloc_tutorial]]
+- *documentation* [[http://is.gd/pRoloc_tutorial]]
 - *GUI* [[http://is.gd/pRolocGUI]]
 - *data* [[http://is.gd/pRolocdata]]
 - *Videos* [[http://is.gd/R4ProteomicsVideos]]
@@ -60,5 +62,5 @@ and reproducible pipeline.
 
 [4] [[http://bioinformatics.oxfordjournals.org/content/30/9/1322][Gatto L . /et al./ Bioinformatics. 2014 1;30(9):1322-4.]]
 [5] [[http://www.mcponline.org./content/early/2014/05/20/mcp.M113.036350.abstract][Gatto L. /et al./ MCP 2014 Aug;13(8):1937-52.]]
-[6] [[http://www.ncbi.nlm.nih.gov/pubmed/23523639][Breckels LM. /et al./ J Proteomics. 2013, 2(88), 129-40.]]
+[6] [[http://www.sciencedirect.com/science/article/pii/S1874391913000948][Breckels LM. /et al./ J Proteomics. 2013, 2(88), 129-40.]]
 
