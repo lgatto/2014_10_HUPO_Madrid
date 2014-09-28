@@ -251,7 +251,7 @@ id2 <- openIDfile("msgf-res2.mzid")
           supported: \Rpackage{MSnbase} and \Rpackage{isobar} for
           isobaric tagging such as iTRAQ and TMT,
           \Rpackage{MALDIquant} for MALDI data, \Rpackage{MSnbase} for
-          spectra couting and other MS$^2$ label free methods and
+          spectra counting and other MS$^2$ label free methods and
           \Rpackage{synapter} supports a DIA complete pipeline,
            including ion mobility separation on Waters Synapt
           instruments.}
