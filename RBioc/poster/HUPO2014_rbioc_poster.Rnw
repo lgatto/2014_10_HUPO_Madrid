@@ -8,6 +8,32 @@
   %% \usetheme{CCP}
 }
 
+
+
+% footline colors and fonts
+\setbeamercolor{footline}{fg=white,bg=gray}
+\setbeamerfont{footline}{fg=black,size=\normalsize}
+
+\setbeamertemplate{footline}{
+  \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+  \leavevmode%
+  \begin{beamercolorbox}[ht=2ex]{footline}%
+    \centering
+    HUPO meeting
+    \hskip3ex 
+    5 -- 8 October 2014
+    \hskip3ex 
+    Madrid
+  \end{beamercolorbox}
+  \vskip0pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line foot}
+    \rule{0pt}{2pt}
+  \end{beamercolorbox}
+}
+
+
 \setbeamertemplate{bibliography item}[text]
 
 \boldmath
@@ -94,14 +120,22 @@
 
 \title[HUPO14 RBioc]{\huge A current perspective on using \R and Bioconductor for proteomics data analysis}
 
-\author[Gatto et al.]{\large L. Gatto$^{*, 1,2}$, S. Gibb$^{1,3}$}
+\author[Gatto et al.]{\large 
+  Sebastian Gibb$^{1, 3}$,
+  LM. Breckels$^{1,2}$, 
+  T. Lin Pedersen$^4$, 
+  VA. Petyuk$^5$
+  KS. Lilley$^2$ and 
+  L. Gatto$^{1,2,*}$}
 
 \institute[CCP]{
   \begin{small}
     $^1$Computational Proteomics Unit and $^2$Cambridge Centre for Proteomics, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
     $^3$Department of Anesthesiology and Intensive Care, Medical Faculty Carl Gustav Carus, Technical University Dresden, Fetscherstr. 74, 01307 Dresden\\
+    $^4$Chr. Hansen A/S, H\o rsholm, Denmark / Technical University of Denmark, Kgs. Lyngby, Denmark\\
+    $^5$Biological Sciences Division, Pacific Northwest National Laboratory, Richland, WA, USA\\
     \bigskip
-    $^{*}$\url{lg390@cam.ac.uk} -- \url{http://www.bio.cam.ac.uk/proteomics/}
+    $^{*}$\url{lg390@cam.ac.uk} \hspace{5cm}  \url{http://cpu.sysbiol.cam.ac.uk}
   \end{small}
 }
 
@@ -126,8 +160,19 @@ options(replace.assign = TRUE,
 ## suppressPackageStartupMessages(library("MSnbase"))
 ## suppressPackageStartupMessages(library("mzR"))
 ## suppressPackageStartupMessages(library("mzID"))
+suppressPackageStartupMessages(library("MSnID"))
 @
 %%$
+
+<<id0, cache=TRUE, echo=FALSE>>=
+load("../R/msnid.rda")
+id <- id0
+id <- assess_termini(id, validCleavagePattern="[KR]\\.[^P]")
+id <- assess_missed_cleavages(id, missedCleavagePattern="[KR](?=[^P$])")
+id$msmsScore <- -log10(id$`MS-GF:SpecEValue`)
+id$absParentMassErrorPPM <- abs(mass_measurement_error(id))
+filter <- psmfilter
+@
 
 \begin{frame}[fragile]
 
@@ -140,27 +185,26 @@ options(replace.assign = TRUE,
 
     \begin{column}{.48\textwidth}
      \begin{block}{Introduction}
-       \justifying
-
-       The \R statistical environment and programming language is a
-       key player in many domains that require robust data
-       analysis. The Bioconductor project offer a wide range of \R
-       packages dedicated to the analysis and comprehension of high
-       throughput biology. Originally focused on genomics,
-       R/Bioconductor are gaining increasing attention in the
-       proteomics, metabolomics and mass spectrometry communities, as
-       reflected by the download statistics and package contributions.
+       \justifying \secintro{ The \R statistical environment and
+         programming language is a key player in many domains that
+         require robust data analysis. The Bioconductor project offer
+         a wide range of \R packages dedicated to the analysis and
+         comprehension of high throughput biology. Originally focused
+         on genomics, R/Bioconductor are gaining increasing attention
+         in the proteomics, metabolomics and mass spectrometry
+         communities, as reflected by the download statistics and
+         package contributions.}
 
       \begin{figure}[h]
-        \begin{subfigure}[b]{0.44\linewidth}
+        \begin{subfigure}[b]{0.4\linewidth}
           \includegraphics[width=\linewidth]{figures/development_biocviews.pdf}
         \end{subfigure}
-        \begin{subfigure}[b]{0.44\linewidth}
+        \begin{subfigure}[b]{0.4\linewidth}
           \includegraphics[width=\linewidth]{figures/downloads_biocviews.pdf}
         \end{subfigure}
         \label{fig:biocviews}
-        \caption{The left figure shows the number of Bioconductor
-          packages dedicated to \emph{Proteomics},
+        \caption{\justifying The left figure shows the number of
+          Bioconductor packages dedicated to \emph{Proteomics},
           \emph{MassSpectrometry} and \emph{MassSpectrometryData}
           packages on Bioconductor in the BiocViews . On the right
           figure, we show the number of distinct package
@@ -170,10 +214,15 @@ options(replace.assign = TRUE,
       \end{figure}
       
       Here, we present an overview of current Bioconductor
-      infrastructure dedicated to proteomics and mass spectrometry.
+      infrastructure dedicated to proteomics and mass
+      spectrometry. These software packages \textbf{tightly
+        interoperate}, providing \textbf{well defined pipeline
+        workflows} and a \textbf{flexible and in-depth development
+        environment}.
 
-     \end{block}
-     \vfill
+    \end{block}
+
+    \vspace{1cm} 
 
     \begin{block}{Working with raw data}
        \justifying
@@ -182,8 +231,7 @@ options(replace.assign = TRUE,
        to overcome the shortcomings of closed, binary vendor-specific formats.}
 
      One of the main projects that implement parsers for the XML-based
-     open formats is the \texttt{C++} proteowizard project (Chambers
-     \textit{et al.} Nat Biotechnol. 2012 Oct;30(10):918-20), which is
+     open formats is the \texttt{C++} proteowizard project, which is
      interfaced by the \Rpackage{mzR} Bioconductor package using the
      \Rpackage{Rcpp} infrastructure for fast raw and (starting with
      Bioconductor version 3.0) identification data. \texttt{mzIdentML}
@@ -205,37 +253,29 @@ id2 <- openIDfile("msgf-res2.mzid")
      \bigskip
 
      \begin{block}{Identification}
-       \justifying \secintro{\R/Bioconductor provide software to parse
-         \texttt{mzIdentML} files (\Rpackage{mzID} and
+       \justifying \secintro{\texttt{R}/Bioconductor provide software
+         to parse \texttt{mzIdentML} files (\Rpackage{mzID} and
          \Rpackage{mzR}, see above), directly run identification \R
          (\Rpackage{rTANDEM}, \Rpackage{MSGFplus}) and optimise FDR
-         calculations based on decoy searches (\Rpackage{MSnID})}
-<<ident>>=
-## an MSnID chunk
-@
+         calculations based on decoy searches. Below, we use
+         \Rpackage{MSnID} to define identification searches filters
+         using precursor mass error, identification scores and missed
+         cleavage to minimise false discovery rates. }
 
+         <<ident, cache=TRUE>>=
+         (id <- apply_filter(id, filter))
+         @
      \end{block}
 
-      \begin{block}{MS data processing}
-        \secintro{MS spectrum processing is available in multiple
-          packages, optimised for specific use cases and pipelines:
-          \Rpackage{MSnbase}, \Rpackage{xcms}, \Rpackage{MALDIquant}.}
-
-      \begin{figure}[h]
-          \includegraphics[width=.9\linewidth]{figures/mqpreproc.pdf}
-        \label{fig:msproc}
-        \caption{Illustration of the \texttt{MALDIquant} preprocessing
-          pipeline. The first figure (A) shows a raw spectrum with the
-          estimated baseline. In the second figure (B) the spectrum is
-          variance-stabilised, smoothed, baseline-corrected and the
-          detected peaks are marked with blue crosses. The third
-          figure (C) is an example of a fitted warping function for
-          peak alignment. In the next figures, four peaks are shown
-          before (D) and after (E) performing the alignment. The last
-          figure (F) represents a merged spectrum with discovered and
-          labelled peaks.}
-      \end{figure}
-        
+      \begin{block}{Quantitation}
+        \justifying \secintro{Several quantitation pipelines are
+          supported: \Rpackage{MSnbase} and \Rpackage{isobar} for
+          isobaric tagging such as iTRAQ and TMT,
+          \Rpackage{MALDIquant} for MALDI data, \Rpackage{MSnbase} for
+          spectra counting and other MS$^2$ label free methods and
+          \Rpackage{synapter} supports a DIA complete pipeline,
+           including ion mobility separation on Waters Synapt
+          instruments.}
       \end{block}
 
     \end{column}
@@ -246,22 +286,61 @@ id2 <- openIDfile("msgf-res2.mzid")
 
     \begin{column}{.48\textwidth}
 
-      \begin{block}{Quantitation}
-        \justifying \secintro{Several quantitation pipelines are
-          supported: \Rpackage{MSnbase} and \Rpackage{isobar} for
-          isobaric tagging such as iTRAQ and TMT,
-          \Rpackage{MALDIquant} for MALDI data, \Rpackage{MSnbase} for
-          spectra couting and other MS$^2$ label free methods and
-          \Rpackage{synapter} supports a DIA complete pipeline,
-           including ion mobility separation on Waters Synapt
-          instruments.}
+
+      \begin{block}{MS data processing}
+        \secintro{MS spectrum processing is available in multiple
+          packages, optimised for specific use cases and pipelines:
+          \Rpackage{MSnbase}, \Rpackage{xcms}, \Rpackage{MALDIquant}.}
+
+      \begin{figure}[h]
+          \includegraphics[width=1\linewidth]{figures/mqpreproc.pdf}
+       \label{fig:msproc}
+       \caption{\justifying Illustration of the \texttt{MALDIquant}
+         preprocessing pipeline. The first figure (A) shows a raw
+         spectrum with the estimated baseline. In the second figure
+         (B) the spectrum is variance-stabilised, smoothed,
+         baseline-corrected and the detected peaks are marked with
+         blue crosses. The third figure (C) is an example of a fitted
+         warping function for peak alignment. In the next figures,
+         four peaks are shown before (D) and after (E) performing the
+         alignment. The last figure (F) represents a merged spectrum
+         with discovered and labelled peaks.}
+      \end{figure}
+        
       \end{block}
 
       \begin{block}{Visualisation}
-        \justifying \secintro{\R excels in graphics. It also allows to
-          easily program interactive visualisation interfaces.}
-        A figure from the vis paper, a \Rpackage{shiny} GUI example.
+        \justifying \secintro{ Using \R for high quality programmable
+          figures and interactive graphical user interfaces such as
+          \url{https://lgatto.shinyapps.io/shinyMA/}. }
 
+        \begin{columns}
+          \begin{column}{.4\textwidth}
+            \begin{figure}[h]
+              \includegraphics[width = .3\linewidth]{figures/mapsheadpdf.pdf}
+              \includegraphics[width = .3\linewidth]{figures/maps3Dpdf.pdf}
+              \includegraphics[width = .3\linewidth]{figures/maps3D2pdf.pdf} \\
+              \includegraphics[width = .9\linewidth]{figures/msdetailspdf.pdf}
+              \label{fig:vis2}
+            \end{figure}            
+          \end{column}
+          \begin{column}{.4\textwidth}
+            \begin{figure}[h]
+              \includegraphics[width=\linewidth]{figures/sweave-precplot.pdf}
+              \label{fig:vis1}
+            \end{figure}            
+          \end{column}
+        \end{columns}
+
+        \begin{figure}[h]
+          \includegraphics[width=.4\linewidth]{figures/gui1.png}\hspace{2cm}
+          \includegraphics[width=.4\linewidth]{figures/gui2.png}
+          \caption{Visualising raw data and process quantitative data
+            (top) and interactive graphical interfaces (bottom) from
+            the \Rpackage{pRolocGUI} and \Rpackage{MSGFgui} packages. }
+          \label{fig:gui}
+        \end{figure}            
+        
       \end{block}
 
       \vfill
@@ -271,60 +350,52 @@ id2 <- openIDfile("msgf-res2.mzid")
 
         \secintro{As an environment for statistical computing, the
           very best of data processing, statistical modelling and
-          machine learning is readily available.}  
+          machine learning is readily available in packages such as
+          \Rpackage{MSnbase}, \Rpackage{isobar}, \Rpackage{MSstats},
+          \Rpackage{msmsTests}.}
 
-        \Rpackage{MSnbase}, \Rpackage{isobar}, \Rpackage{MSstats},
-        \Rpackage{msmsTests},
+        \Rpackage{MSstats} offers set of tools for statistical
+        relative protein significance analysis in DDA, SRM and DIA
+        experiments as well as power calculation. \Rpackage{msmsTests}
+        leverages powerful statistical modelling from the
+        \Rpackage{edgeR} package to analyse spectral counting data. 
 
       \end{block}
 
-      \vfill
+      \vspace{1cm}
 
-      \begin{block}{Misc}
-        Any other applications: PTMs, spatial proteomics, ...
+      \begin{block}{Conclusion}
+        \secintro{A wide range of other applications such as
+          post-translational modifications (\Rpackage{isobar}) or
+          spatial proteomics (\Rpackage{pRoloc}) are available as
+          Bioconductor packages. A complete list is available on the
+          Bioconductor page and in the \Rpackage{RforProteomics}
+          package.  }
       \end{block}
 
-      \begin{block}{}
-        \challenge{
-
-        \begin{thebibliography}{6}
-
-        % \bibitem{msstats} Choi M \textit{et al.}
-        %   \emph{MSstats: an R package for statistical analysis of quantitative
-        %   mass spectrometry-based proteomic experiments}.
-        %   Bioinformatics. 2014 %% doi:10.1093/bioinformatics/btu305
-        %   PMID: 24794931.
-
-
-        \bibitem{r4p} Gatto L and Christoforou A
-          \emph{Using R and Bioconductor for proteomics data analysis}.
-          Biochim Biophys Acta. 2013 %% May 18. doi:pii: S1570-9639(13)00186-6.10.1016/j.bbapap.2013.04.032.
-          PMID: 23692960.
-
-        % \bibitem{msnbase} Gatto L and Lilley KS
-        %   \emph{MSnbase-an R/Bioconductor package for isobaric tagged mass spectrometry data visualization, processing and quantitation}.
-        %   Bioinformatics. 2012 %% Jan; 28:(2)288-9
-        %   PMID: 22113085.
-
-        % \bibitem{maldiquant} Gibb S and Strimmer K
-        %   \emph{MALDIquant: a versatile R package for the analysis of mass spectrometry data.}
-        %   Bioinformatics. 2012 %% Sep; 28:(17)2270-1
-        %   PMID: 22796955.
-
+      \begin{columns}
+        \begin{column}{.75\textwidth}
           \begin{description}
-          \item[R] \url{http://www.r-project.org/}
+          \item[The R project] \url{http://www.r-project.org/}
           \item[Bioconductor] \url{http://bioconductor.org/}
           \item[RforProteomics]\url{http://is.gd/R4Proteomics}
           \item[Google group] \url{https://is.gd/rbioc_sig_proteomics}
           \item[Support site] \url{https://support.bioconductor.org}
-          \end{description}
-          
-        \end{thebibliography}
-      }
+          \end{description}              
+        \end{column}
+        \begin{column}{.23\textwidth}
+          \includegraphics[width=.9\linewidth]{./figures/RBioc_QA.png}
+        \end{column}
+      \end{columns}
 
-      \end{block}
+      \vspace{1cm}
 
-      %% \vspace{2mm}
+      {\small This work was supported by the \textbf{European Union
+          7$^{th}$ Framework Program PRIME-XS project} and a
+        \textbf{BBSRC Tools and Resources Development Fund}.}
+
+      \vfill
+
     \end{column}
   \end{columns}
 
