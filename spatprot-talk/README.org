@@ -1,0 +1,38 @@
+HUPO 2014, Madrid
+Wed, Oct 8, 2014, 08:00-09:20, Room E
+
+CompMS - HUPO Computational Mass Spectrometry  Initiative
+Chair: Henning Hermjakob
+
+CompMS is a new, joint initiative of HUPO and the International Society for
+Computational Biology (ISCB). It promotes the efficient, high quality analysis of mass
+spectrometry data through dissemination and training in existing approaches and
+coordination of new, innovative approaches. The CompMS initiative aims to exploit
+synergies between different application domains, in particular proteomics and
+metabolomics. We aim to
+• build a community of scientists working in computational mass spectrometry
+• integrate experimental and theoretical research
+• bridge the gaps between proteomics, metabolomics, and other MS-driven fields
+For more information on CompMS please see http://CompMS.org.
+
+This will be the constitutive meeting of CompMS as a HUPO initiative, and will
+provide an opportunity for all attendees to engage with the initiative and its future
+activities.
+
+
+8:00 – 8:10 am Introduction to the Computational Mass Spectrometry Initiative
+Oliver Kohlbacher
+(U Tuebingen)
+
+8:10 – 8:30 am Computational Challenges in Spatial Mass Spectrometry
+Laurent Gatto
+(U Cambridge)
+
+8:30 – 8:50 am Spatial Metabolomics Using Imaging Mass Spectrometry
+Theodore Alexandrov
+(U Bremen / EMBL Heidelberg)
+
+8:50 – 9:20 am Open Business Meeting of the HUPO Initiative for
+Computational Mass Spectrometry
+
+
