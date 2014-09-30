@@ -286,7 +286,6 @@ id2 <- openIDfile("msgf-res2.mzid")
 
     \begin{column}{.48\textwidth}
 
-
       \begin{block}{MS data processing}
         \secintro{MS spectrum processing is available in multiple
           packages, optimised for specific use cases and pipelines:
