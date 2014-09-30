@@ -120,12 +120,12 @@
 
 \title[HUPO14 RBioc]{\huge A current perspective on using \R and Bioconductor for proteomics data analysis}
 
-\author[Gatto et al.]{\large 
+\author[Gatto et al.]{\large
   Sebastian Gibb$^{1, 3}$,
-  LM. Breckels$^{1,2}$, 
-  T. Lin Pedersen$^4$, 
-  VA. Petyuk$^5$
-  KS. Lilley$^2$ and 
+  LM. Breckels$^{1,2}$,
+  T. Lin Pedersen$^4$,
+  VA. Petyuk$^5$,
+  KS. Lilley$^2$ and
   L. Gatto$^{1,2,*}$}
 
 \institute[CCP]{
