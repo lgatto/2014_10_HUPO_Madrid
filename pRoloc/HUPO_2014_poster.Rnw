@@ -344,8 +344,9 @@ to a spreadsheet file.
 
       \begin{block}{5) Interpretation}
         The graphical user interface implemented in the
-        \Rpackage{pRolocGUI} package enables one the interactively
+        \Rpackage{pRolocGUI} package enables one to interactively
         explore the data.
+
         <<gui, eval=FALSE>>=
         library("pRolocGUI")
         pRolocVis(spat)

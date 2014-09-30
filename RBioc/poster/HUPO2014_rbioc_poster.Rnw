@@ -242,7 +242,7 @@ library("mzR")
 ms <- openMSfile("raw_data.raw")
 id <- openIDfile("msgf-res.mzid")
 library("mzID")
-id2 <- openIDfile("msgf-res2.mzid")
+id2 <- mzID("msgf-res2.mzid")
 @
 
        The resulting \Robject{ms} object is a file handle that allows fast
@@ -365,11 +365,12 @@ id2 <- openIDfile("msgf-res2.mzid")
 
       \begin{block}{Conclusion}
         \secintro{A wide range of other applications such as
-          post-translational modifications (\Rpackage{isobar}) or
-          spatial proteomics (\Rpackage{pRoloc}) are available as
-          Bioconductor packages. A complete list is available on the
-          Bioconductor page and in the \Rpackage{RforProteomics}
-          package.  }
+          post-translational modifications (\Rpackage{isobar}),
+          quality control (\Rpackage{qcmetrics} and
+          \Rpackage{proteoQC}) or spatial proteomics
+          (\Rpackage{pRoloc}) are available as Bioconductor
+          packages. A complete list is available on the Bioconductor
+          page and in the \Rpackage{RforProteomics} package.  }
       \end{block}
 
       \begin{columns}
