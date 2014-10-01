@@ -156,8 +156,7 @@
   analysis of spatial proteomics data}
 
 \author[Gatto et al.]{
-  \large Laurent Gatto$^{1,2,*}$, Lisa M. Breckels$^{1,2}$, Thomas Naake$^{1,2}$,\\
-  Samuel Wieczorek$^{3}$, Thomas Burger$^{3}$, Kathryn S. Lilley$^{2}$
+  \large L. Gatto$^{1,2,*}$, LM. Breckels$^{1,2}$, T. Naake$^{1,2}$, S. Wieczorek$^{3}$, T. Burger$^{3}$ and KS. Lilley$^{2}$
 }
 
 \institute[CPU]{
@@ -388,7 +387,7 @@ be exported to a spreadsheet file.
         \includegraphics[width=.5\linewidth]{./figures/gui2.png}
       \end{figure}
 
-      \vspace{1.cm}
+      \vspace{2cm}
 
       {\small This work was supported by the \textbf{European Union
           7$^{th}$ Framework Program PRIME-XS project} and a
