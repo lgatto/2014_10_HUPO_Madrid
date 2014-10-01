@@ -4,6 +4,35 @@
 
 \documentclass[final]{beamer}
 
+\setbeamertemplate{headline}{  
+  \leavevmode
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.75\paperwidth}
+        \hskip2ex
+        \vskip4ex
+        \raggedleft
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1.5ex]}
+        \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+      \end{column}
+      \begin{column}{.1\paperwidth}
+        \vskip4ex
+        \includegraphics[width=1.2\linewidth,keepaspectratio]{./figures/uc-logo}
+      \end{column}
+    \end{columns}
+    \vskip2ex
+    \centering
+    \usebeamercolor{institute in headline}{\color{fg}{\normalsize\insertdate}\\[1ex]}
+    \vskip2ex
+  \end{beamercolorbox}
+
+%%  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+%%    \rule{0pt}{2pt}
+%%  \end{beamercolorbox}
+}
+
+
 \mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
   %% \usetheme{CCP}
 }
@@ -130,9 +159,9 @@
 
 \institute[CCP]{
   \begin{small}
-    $^1$Computational Proteomics Unit and $^2$Cambridge Centre for Proteomics, Department of Biochemistry, Tennis Court Road, University of Cambridge, CB2 1QR\\
-    $^3$Department of Anesthesiology and Intensive Care, Medical Faculty Carl Gustav Carus, Technical University Dresden, Fetscherstr. 74, 01307 Dresden\\
-    $^4$Chr. Hansen A/S, H\o rsholm, Denmark / Technical University of Denmark, Kgs. Lyngby, Denmark\\
+    $^1$Computational Proteomics Unit and $^2$Cambridge Centre for Proteomics, Department of Biochemistry, University of Cambridge, UK\\
+    $^3$Department of Anesthesiology and Intensive Care, Medical Faculty Carl Gustav Carus, Technical University Dresden, Germany\\
+    $^4$Chr. Hansen A/S, H\o rsholm / Technical University of Denmark, Kgs. Lyngby, Denmark\\
     $^5$Biological Sciences Division, Pacific Northwest National Laboratory, Richland, WA, USA\\
     \bigskip
     $^{*}$\url{lg390@cam.ac.uk} \hspace{5cm}  \url{http://cpu.sysbiol.cam.ac.uk}
@@ -176,7 +205,7 @@ filter <- psmfilter
 
 \begin{frame}[fragile]
 
-  \maketitle
+  % \maketitle
 
   \begin{columns}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
