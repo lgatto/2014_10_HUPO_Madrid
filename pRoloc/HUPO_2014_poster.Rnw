@@ -5,6 +5,35 @@
 \documentclass[final]{beamer} 
 \usepackage{ragged2e} 
 
+\setbeamertemplate{headline}{  
+  \leavevmode
+  \begin{beamercolorbox}[wd=\paperwidth]{headline}
+    \begin{columns}[T]
+      \begin{column}{.75\paperwidth}
+        \hskip2ex
+        \vskip4ex
+        \raggedleft
+        \usebeamercolor{title in headline}{\color{fg}\textbf{\LARGE{\inserttitle}}\\[1.5ex]}
+        \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+        \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+      \end{column}
+      \begin{column}{.1\paperwidth}
+        \vskip4ex
+        \includegraphics[width=1.2\linewidth,keepaspectratio]{./figures/uc-logo}
+      \end{column}
+    \end{columns}
+    \vskip2ex
+    \centering
+    \usebeamercolor{institute in headline}{\color{fg}{\normalsize\insertdate}\\[1ex]}
+    \vskip2ex
+  \end{beamercolorbox}
+
+%%  \begin{beamercolorbox}[wd=\paperwidth]{lower separation line head}
+%%    \rule{0pt}{2pt}
+%%  \end{beamercolorbox}
+}
+
+
 \mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
   %% \usetheme{CCP}
 }
@@ -127,7 +156,8 @@
   analysis of spatial proteomics data}
 
 \author[Gatto et al.]{
-  \large Laurent Gatto$^{1,2,*}$, Lisa M. Breckels$^{1,2}$, Thomas Naake$^{1,2}$,\\ Samuel Wieczorek$^{3}$, Thomas Burger$^{3}$, Kathryn S. Lilley$^{2}$
+  \large Laurent Gatto$^{1,2,*}$, Lisa M. Breckels$^{1,2}$, Thomas Naake$^{1,2}$,\\
+  Samuel Wieczorek$^{3}$, Thomas Burger$^{3}$, Kathryn S. Lilley$^{2}$
 }
 
 \institute[CPU]{
@@ -163,30 +193,29 @@ options(replace.assign = TRUE,
 
 \begin{frame}[fragile]
 
-  \maketitle
+%%   \maketitle
 
   \begin{columns}
     \begin{column}{.48\textwidth}
-      \challenge{
         \begin{block}{Introduction}     
           \vspace{3mm}
           \begin{large}
-            Organelle proteomics, or spatial proteomics, is the
-            systematic study of proteins and their assignment to
-            subcellular niches including organelles.
-            \Rpackage{pRoloc} and \Rpackage{pRolocGUI} are
-            \texttt{R}/Bioconductor packages that implement all the
-            necessary tools for the sound and reproducible analysis
-            and interactive exploration of spatial proteomics data
-            from any type of experiment such as LOPIT, PCP or
-            PCP-SILAC.
+            \secintro{ \justifying Organelle proteomics, or spatial
+              proteomics, is the systematic study of proteins and
+              their assignment to subcellular niches including
+              organelles.  \Rpackage{pRoloc} and \Rpackage{pRolocGUI}
+              are \texttt{R}/Bioconductor packages that implement all
+              the necessary tools for the sound and reproducible
+              analysis and interactive exploration of spatial
+              proteomics data from any type of experiment such as
+              LOPIT, PCP or PCP-SILAC. }
             \end{large}
 
           \bigskip 
 
           \begin{large}
-            Below, we illustrate a typical \Rpackage{pRoloc} analysis
-            pipeline: \justifying
+            \secintro{ Below, we illustrate a typical
+              \Rpackage{pRoloc} analysis pipeline: \justifying
             \begin{enumerate}
             \item Loading data into \texttt{R} and adding markers
             \item QC: checking resolution in the data and organelle
@@ -195,22 +224,22 @@ options(replace.assign = TRUE,
             \item Classification of unlabelled proteins
             \item Results, interpretation and visualisation
             \end{enumerate}            
+          }
           \end{large}
-        \end{block}
-       }
-     
 
-     % \vspace{2cm}
-       \vfill
+        \end{block}
+
+     
+     \vspace{1cm}
 
       \begin{block}{1) Data input}
 
-        We start by reading quantitative data from 10 fractions (at
-        positions 2 to 11 in the data spreadsheet) sampled along a
-        separation gradient from a \texttt{csv} file and add
-        \textit{Drosophila} organelle markers. This code creates an
-        \Robject{MSnSet} data object (named \Robject{spat}) that
-        stores the quantitative data and the metadata, and can
+        \justifying We start by reading quantitative data from 10
+        fractions (at positions 2 to 11 in the data spreadsheet)
+        sampled along a separation gradient from a \texttt{csv} file
+        and add \textit{Drosophila} organelle markers. This code
+        creates an \Robject{MSnSet} data object (named \Robject{spat})
+        that stores the quantitative data and the metadata, and can
         subsequently be easily manipulated, plotted and further
         processed.
 
@@ -227,9 +256,10 @@ options(replace.assign = TRUE,
 
       \begin{block}{2) Quality control}
 
-        We verify on PCA plots that there is structure in the data
-        (i.e we distinguish well defined clusters, left) and that the
-        markers defined well resolved organelle clusters (right).
+        \justifying We verify on PCA plots that there is structure in
+        the data (i.e we distinguish well defined clusters, left) and
+        that the markers defined well resolved organelle clusters
+        (right).
 
         <<qc, eval=FALSE>>=
         plot2D(spat)
@@ -240,12 +270,12 @@ options(replace.assign = TRUE,
       \begin{figure}
         \centering
         \includegraphics[width=.44\linewidth]{./figures/pca1.pdf}
-        \hspace{1cm}
+        \hspace{1.5cm}
         \includegraphics[width=.44\linewidth]{./figures/pca2.pdf}
       \end{figure}
 
 
-      \challenge{        
+      \challenge{
         Gatto \textit{et al.} \emph{Mass-spectrometry-based spatial
           proteomics data analysis using pRoloc and pRolocdata.}
         Bioinformatics. 2014 May 1;30(9):1322-4.
@@ -279,9 +309,9 @@ options(replace.assign = TRUE,
 
       \begin{block}{3) Novelty detection}
         
-        Our manually curated markers do not cover the entire
-        sub-cellular diversity. We use a semi-supervised machine
-        learning algorithms (Breckels \textit{et al.}, J
+        \justifying Our manually curated markers do not cover the
+        entire sub-cellular diversity. We use a semi-supervised
+        machine learning algorithms (Breckels \textit{et al.}, J
         Proteomics. 2013 Aug 2;88:129-40.) to identify new putative
         organelle clusters, called \emph{phenotypes} (left), which
         require validation by the user (right).
@@ -293,16 +323,16 @@ plot2D(spat, fcol = "pd")
 
       \begin{figure}
         \centering
-        \includegraphics[width=.41\linewidth]{./figures/pca3.pdf}
-        \includegraphics[width=.41\linewidth]{./figures/pca4.pdf}
+        \includegraphics[width=.45\linewidth]{./figures/pca3.pdf}
+        \includegraphics[width=.45\linewidth]{./figures/pca4.pdf}
       \end{figure}
 
       \end{block}
       \begin{block}{4) Classification}
 
-        We can now classify unlabelled proteins to any of the
-        augmented classes using a supervised machine (SVM) learning
-        algorithms, for example, a support vector machine
+        \justifying We can now classify unlabelled proteins to any of
+        the augmented classes using a supervised machine (SVM)
+        learning algorithms, for example, a support vector machine
         classifier. It is essential to tune the classification model
         parameters (here $sigma$ and $cost$) prior to actual
         classification (left).
@@ -312,10 +342,10 @@ plot2D(spat, fcol = "pd")
         spat <- svmClassification(spat, params, fcol = "pd.markers")
         @ 
 
-The classification algorithm calculates classification probabilities
-that reflect the distance of a protein to the decision boundaries
-defined by the SVM model (right). Eventually, the data can be exported
-to a spreadsheet file.
+\justifying The classification algorithm calculates classification
+probabilities that reflect the distance of a protein to the decision
+boundaries defined by the SVM model (right). Eventually, the data can
+be exported to a spreadsheet file.
         
         <<res, eval=FALSE>>=
         ptsze <- exp(fData(spat)$svm.scores) - 1
@@ -357,8 +387,8 @@ to a spreadsheet file.
         \includegraphics[width=.5\linewidth]{./figures/gui1.png}
         \includegraphics[width=.5\linewidth]{./figures/gui2.png}
       \end{figure}
-      
-      \vspace{1.5cm}
+
+      \vspace{1.cm}
 
       {\small This work was supported by the \textbf{European Union
           7$^{th}$ Framework Program PRIME-XS project} and a

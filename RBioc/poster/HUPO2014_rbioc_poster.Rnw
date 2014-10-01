@@ -9,7 +9,6 @@
 }
 
 
-
 % footline colors and fonts
 \setbeamercolor{footline}{fg=white,bg=gray}
 \setbeamerfont{footline}{fg=black,size=\normalsize}
@@ -34,7 +33,7 @@
 }
 
 
-\setbeamertemplate{bibliography item}[text]
+% \setbeamertemplate{bibliography item}[text]
 
 \boldmath
 \usepackage[orientation=portrait,size=a0,scale=1.4,debug]{beamerposter}                        % e.g. for DIN-A0 poster
@@ -46,6 +45,7 @@
 
 %% hide navigation symbols (bottom right)
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
 
 \usepackage{ragged2e}
 \usepackage[english]{babel}
@@ -111,12 +111,12 @@
 
 
 
-%% figure numbering
-\usecaptiontemplate{
-  \small
-  \structure{\insertcaptionname~\insertcaptionnumber:}
-  \insertcaption
-}
+% %% figure numbering
+% \usecaptiontemplate{
+%   \small
+%   \structure{\insertcaptionname~\insertcaptionnumber:}
+%   \insertcaption
+% }
 
 \title[HUPO14 RBioc]{\huge A current perspective on using \R and Bioconductor for proteomics data analysis}
 

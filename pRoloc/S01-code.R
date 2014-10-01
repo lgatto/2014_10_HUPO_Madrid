@@ -29,8 +29,8 @@ dev.off()
 setStockcol(paste0(getStockcol(), 80))
 
 pdf("./figures/pca3.pdf")
-plot2D(pdres, fcol = "pd")
-addLegend(pdres, fcol = "pd", ncol = 2,
+plot2D(spat, fcol = "pd.2013")
+addLegend(spat, fcol = "pd.2013", ncol = 2,
           where = "bottomright", bty = "n")
 dev.off()
 pdf("./figures/pca4.pdf")
