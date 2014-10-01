@@ -121,7 +121,7 @@
 \title[HUPO14 RBioc]{\huge A current perspective on using \R and Bioconductor for proteomics data analysis}
 
 \author[Gatto et al.]{\large
-  Sebastian Gibb$^{1, 3}$,
+  S. Gibb$^{1, 3}$,
   LM. Breckels$^{1,2}$,
   T. Lin Pedersen$^4$,
   VA. Petyuk$^5$,
@@ -246,7 +246,7 @@ id2 <- mzID("msgf-res2.mzid")
 @
 
        The resulting \Robject{ms} object is a file handle that allows fast
-       random access to the individual spectra. \Rpackage{mzR} is used by a
+       access to the individual spectra. \Rpackage{mzR} is used by a
        variety of other packages like \Rpackage{xcms}, \Rpackage{MSnbase},
        \Rpackage{RMassBank} and \Rpackage{TargetSearch}.
      \end{block}
