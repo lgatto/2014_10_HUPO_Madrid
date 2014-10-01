@@ -370,7 +370,9 @@ id2 <- mzID("msgf-res2.mzid")
           \Rpackage{proteoQC}) or spatial proteomics
           (\Rpackage{pRoloc}) are available as Bioconductor
           packages. A complete list is available on the Bioconductor
-          page and in the \Rpackage{RforProteomics} package.  }
+          page and in the \Rpackage{RforProteomics} package.
+          Contributions and discussions are welcome on our Google
+          group and GitHub wiki.  }
       \end{block}
 
       \begin{columns}
