@@ -4,6 +4,10 @@
 
 \documentclass[final]{beamer}
 
+\mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
+  %% \usetheme{CCP}
+}
+
 \setbeamertemplate{headline}{  
   \leavevmode
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
@@ -32,15 +36,10 @@
 %%  \end{beamercolorbox}
 }
 
-
-\mode<presentation> {  %% check http://www-i6.informatik.rwth-aachen.de/~dreuw/latexbeamerposter.php for examples
-  %% \usetheme{CCP}
-}
-
-
 % footline colors and fonts
 \setbeamercolor{footline}{fg=white,bg=gray}
 \setbeamerfont{footline}{fg=black,size=\normalsize}
+
 
 \setbeamertemplate{footline}{
   \begin{beamercolorbox}[wd=\paperwidth]{upper separation line foot}
@@ -214,15 +213,16 @@ filter <- psmfilter
 
     \begin{column}{.48\textwidth}
      \begin{block}{Introduction}
-       \justifying \secintro{ The \R statistical environment and
+
+       \secintro{\justifying The \R statistical environment and
          programming language is a key player in many domains that
          require robust data analysis. The Bioconductor project offer
          a wide range of \R packages dedicated to the analysis and
          comprehension of high throughput biology. Originally focused
-         on genomics, R/Bioconductor are gaining increasing attention
-         in the proteomics, metabolomics and mass spectrometry
+         on genomics, Bioconductor is gaining increasing attention in
+         the proteomics, metabolomics and mass spectrometry
          communities, as reflected by the download statistics and
-         package contributions.}
+         package contributions. }
 
       \begin{figure}[h]
         \begin{subfigure}[b]{0.4\linewidth}
@@ -237,7 +237,7 @@ filter <- psmfilter
           \emph{MassSpectrometry} and \emph{MassSpectrometryData}
           packages on Bioconductor in the BiocViews . On the right
           figure, we show the number of distinct package
-          downloads. Note that the current version, 2.14 currently
+          downloads. Note that the current version, 2.14 still
           encounters downloads. (NB: the data for Bioc 2.12 are
           interpolated due to massive scripted downloads).}
       \end{figure}
