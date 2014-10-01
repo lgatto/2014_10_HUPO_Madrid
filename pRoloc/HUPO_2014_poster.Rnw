@@ -133,7 +133,7 @@
 \institute[CPU]{
   \begin{small}
     $^{1}$Computational Proteomics Unit and $^{2}$Cambridge Centre for Proteomics, Department of Biochemistry, University of Cambridge, UK \\
-    $^{3}$Universit/'e Grenoble-Alpes, CEA (iRSTV/BGE), INSERM (U1038), CNRS (FR3425), 38054 Grenoble, France \\
+    $^{3}$Universit\'e Grenoble-Alpes, CEA (iRSTV/BGE), INSERM (U1038), CNRS (FR3425), 38054 Grenoble, France \\
     \bigskip
     $^{*}$\url{lg390@cam.ac.uk} \hspace{5cm}  \url{http://cpu.sysbiol.cam.ac.uk}
   \end{small}
