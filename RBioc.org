@@ -57,7 +57,9 @@ importance in the current data intensive area.
 
 - *R* [[http://www.r-project.org/]]
 - *Bioconductor* [[http://bioconductor.org/]]
-- *RforProteomics* [[http://is.gd/R4Proteomics]]
+- *RforProteomics software* [[http://is.gd/R4Proteomics]]
+- *RforProteomics web* [[http://lgatto.github.io/RforProteomics/]]
 - *Google group* [[https://is.gd/rbioc_sig_proteomics]]
 - *Support site* [[https://support.bioconductor.org]]
-- *Poster* 
+- *Poster* http://dx.doi.org/10.6084/m9.figshare.1190601
+

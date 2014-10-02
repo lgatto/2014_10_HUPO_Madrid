@@ -57,7 +57,8 @@ and reproducible pipeline.
 - *GUI* [[http://is.gd/pRolocGUI]]
 - *data* [[http://is.gd/pRolocdata]]
 - *Videos* [[http://is.gd/R4ProteomicsVideos]]
-- *Poster* 
+- *Poster* http://dx.doi.org/10.6084/m9.figshare.1190587
+
 
 [4] [[http://bioinformatics.oxfordjournals.org/content/30/9/1322][Gatto L . /et al./ Bioinformatics. 2014 1;30(9):1322-4.]]
 [5] [[http://www.mcponline.org./content/early/2014/05/20/mcp.M113.036350.abstract][Gatto L. /et al./ MCP 2014 Aug;13(8):1937-52.]]
