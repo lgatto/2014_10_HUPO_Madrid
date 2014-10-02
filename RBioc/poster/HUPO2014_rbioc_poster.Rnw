@@ -234,11 +234,10 @@ filter <- psmfilter
         \label{fig:biocviews}
         \caption{\justifying The left figure shows the number of
           Bioconductor packages dedicated to \emph{Proteomics},
-          \emph{MassSpectrometry} and \emph{MassSpectrometryData}
-          packages on Bioconductor in the BiocViews . On the right
-          figure, we show the number of distinct package
-          downloads. Note that the current version, 2.14 still
-          encounters downloads. (NB: the data for Bioc 2.12 are
+          \emph{Mass Spectrometry} and \emph{Mass Spectrometry
+            Data}. On the right figure, we show the number of distinct
+          package downloads. Note that the current version, 2.14 is
+          still downloaded. (NB: the data for Bioc 2.12 are
           interpolated due to massive scripted downloads).}
       \end{figure}
       
