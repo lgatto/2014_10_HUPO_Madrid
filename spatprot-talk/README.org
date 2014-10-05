@@ -1,3 +1,9 @@
+TODO
+
+before/after sldes with classification
+
+* Info
+
 HUPO 2014, Madrid
 Wed, Oct 8, 2014, 08:00-09:20, Room E
 
@@ -34,5 +40,27 @@ Theodore Alexandrov
 
 8:50 – 9:20 am Open Business Meeting of the HUPO Initiative for
 Computational Mass Spectrometry
+
+
+* Talk
+
+** Intro
+- Experimental design leading to data
+- Visualisation: PCA and profile plots
+- classification
+** Challenges
+- data: number of fractions and missing values -> profile plot from
+  MCP and effect of imputation on PCA plot
+
+- reliable organelle markers
+- mapping he sub-cellular diversity -> tan before/after figure
+
+- using external sources
+- mapping changes in sub-cellular localisation
+** Conclusion
+- technology constantly improving
+- development of robust computational methodologies
+- development of software
+
 
 
