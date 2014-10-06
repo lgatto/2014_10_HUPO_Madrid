@@ -1,6 +1,7 @@
 TODO
 
-before/after sldes with classification
+- [X] before/after sldes with classification
+- [ ] details about phenoDisco
 
 * Info
 

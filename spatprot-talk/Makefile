@@ -6,4 +6,4 @@ slides.pdf: slides.tex
 clean:
 	rm -f *~
 	rm -f *.aux *.bbl *.blg *.out *.log
-	rm -f slides.toc slides.nav slides.snm slides.tex
+	rm -f slides.toc slides.nav slides.snm 
