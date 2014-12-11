@@ -79,6 +79,11 @@ counts <- createBiocViewDownloadFigure(df, views=views, biocVersions=versions,
                                        labels=labels, cols=2:3)
 dev.off()
 
+pdf(file.path("..", "poster", "figures", "downloads_biocviews_2.pdf"))
+counts <- createBiocViewDownloadFigure(df, views=views, biocVersions=versions,
+                                       labels=labels, cols=c("red", "steelblue"))
+dev.off()
+
 counts <- do.call(cbind, counts)
 colnames(counts) <- views
 
