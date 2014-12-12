@@ -74,14 +74,17 @@ versions <- paste(2, 6:14, sep=".")
 labels <- paste(versions, biocDates[match(versions, biocVersions)], sep="\n")
 views <- c("Proteomics", "MassSpectrometry")
 
-pdf(file.path("..", "poster", "figures", "downloads_biocviews.pdf"))
+## pdf(file.path("..", "poster", "figures", "downloads_biocviews.pdf"))
 counts <- createBiocViewDownloadFigure(df, views=views, biocVersions=versions,
                                        labels=labels, cols=2:3)
-dev.off()
+## dev.off()
 
-pdf(file.path("..", "poster", "figures", "downloads_biocviews_2.pdf"))
-counts <- createBiocViewDownloadFigure(df, views=views, biocVersions=versions,
-                                       labels=labels, cols=c("red", "steelblue"))
+
+pdf(file.path("..", "poster", "figures", "downloads_biocviews_2.pdf"),
+    width = 5, height = 5)
+plotCountsVsVersions2(counts, views = views,
+                      ylab = "Package downloads",
+                      col = c("steelblue", "red"))
 dev.off()
 
 counts <- do.call(cbind, counts)

@@ -35,11 +35,11 @@ counts <- createBiocViewFigure(views=views,
                                biocVersions=versions, labels=labels)
 dev.off()
 
-pdf(file.path("..", "poster", "figures", "development_biocviews_2.pdf"))
-counts <- createBiocViewFigure(views=views,
-                               rep=c("BioCsoft", "BioCsoft", "BioCexp"),
-                               biocVersions=versions, labels=labels,
-                               cols = c("red", "steelblue", "darkgreen"))
+pdf(file.path("..", "poster", "figures", "development_biocviews_2.pdf"),
+    width = 5, height = 5)
+plotCountsVsVersions2(counts[-3], views[-3], 
+                      ylab = "Number of packages",
+                      col = c("steelblue", "red"))
 dev.off()
 
 counts <- do.call(cbind, counts)
